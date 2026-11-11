@@ -1,0 +1,10 @@
+2026-11-04 09:11:32 | pipeline.validation | INFO    | loaded raw tables: {'users': 943, 'items': 1682, 'interactions': 100000}
+2026-11-04 09:11:32 | pipeline.validation | INFO    | users         rows in     943 | errors     0 | warnings     0 | rows out     943
+2026-11-04 09:11:32 | pipeline.validation | INFO    | items         rows in    1682 | errors     0 | warnings    37 | rows out    1682
+2026-11-04 09:11:32 | pipeline.validation | INFO    | interactions  rows in  100000 | errors     0 | warnings     0 | rows out  100000
+2026-11-04 09:11:32 | pipeline.validation | WARNING | WARN  items         missing_release_date            1 rows
+2026-11-04 09:11:32 | pipeline.validation | WARNING | WARN  items         duplicate_title                36 rows
+2026-11-04 09:11:32 | pipeline.validation | INFO    | validation complete: 22 checks, 0 FAIL, 2 WARN, 0 error rows -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.md
+{"stage": "validation", "seconds": 0.24, "metrics": {"users_rows_out": 943, "items_rows_out": 1682, "interactions_rows_out": 100000, "checks_run": 22, "checks_failed": 0, "checks_warned": 2, "error_rows": 0}}
+
+[exit code 0, 1.6s]

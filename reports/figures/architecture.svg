@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="720" viewBox="0 0 1520 720" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker>
+<style>.box{fill:#fff;stroke:#1f2937;stroke-width:1.5}.stage{fill:#eef2ff;stroke:#3730a3}.store{fill:#ecfdf5;stroke:#047857}.tool{fill:#fff7ed;stroke:#c2410c}
+.t{font-size:15px;font-weight:600;fill:#111827}.s{font-size:12px;fill:#374151}.m{font-size:10.5px;fill:#6b7280;font-family:Menlo,monospace}
+.lane{font-size:13px;font-weight:700;fill:#6b7280;letter-spacing:.5px}.edge{stroke:#374151;stroke-width:1.6;fill:none;marker-end:url(#arr)}
+.dash{stroke:#6b7280;stroke-width:1.3;fill:none;stroke-dasharray:5 4;marker-end:url(#arr)}</style></defs>
+<rect x="0" y="0" width="1520" height="720" fill="#ffffff"/>
+<text x="760.0" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#111827">Recommendation data pipeline - architecture</text>
+<text x="760.0" y="56" text-anchor="middle" class="s">Prefect flow "recommendation-pipeline" (dags/recsys_pipeline_flow.py): every box is a task that wraps one module under src/</text>
+<text x="40" y="100" class="lane">SOURCES</text>
+<rect x="40" y="110" width="210" height="74" rx="10" class="box"/><text x="145" y="138" text-anchor="middle" class="t">MovieLens 100K</text><text x="145" y="156" text-anchor="middle" class="s">u.user / u.item / u.data</text><text x="145" y="172" text-anchor="middle" class="m">sha256-verified zip</text>
+<rect x="40" y="200" width="210" height="60" rx="10" class="box"/><text x="145" y="226" text-anchor="middle" class="t">Synthetic generator</text><text x="145" y="246" text-anchor="middle" class="s">seeded, 3% injected noise</text>
+<text x="290" y="100" class="lane">STAGES (src/)</text>
+<rect x="290" y="110" width="210" height="92" rx="10" class="box stage"/>
+<text x="395.0" y="136" text-anchor="middle" class="t">1 Ingestion</text><text x="395.0" y="156" text-anchor="middle" class="s">download, convert to CSV</text>
+<text x="395.0" y="176" text-anchor="middle" class="m">ingestion/ingest.py</text><text x="395.0" y="192" text-anchor="middle" class="m">&#8594; data/raw/*.csv + manifest</text>
+<rect x="535" y="110" width="210" height="92" rx="10" class="box stage"/>
+<text x="640.0" y="136" text-anchor="middle" class="t">2 Validation</text><text x="640.0" y="156" text-anchor="middle" class="s">pandera schemas + row checks</text>
+<text x="640.0" y="176" text-anchor="middle" class="m">validation/validate.py</text><text x="640.0" y="192" text-anchor="middle" class="m">&#8594; errors/ + validation_report</text>
+<rect x="780" y="110" width="210" height="92" rx="10" class="box stage"/>
+<text x="885.0" y="136" text-anchor="middle" class="t">3 Preparation</text><text x="885.0" y="156" text-anchor="middle" class="s">clean, standardize, time split</text>
+<text x="885.0" y="176" text-anchor="middle" class="m">preparation/prepare.py</text><text x="885.0" y="192" text-anchor="middle" class="m">&#8594; train / test parquet</text>
+<rect x="1025" y="110" width="210" height="92" rx="10" class="box stage"/>
+<text x="1130.0" y="136" text-anchor="middle" class="t">4 Transformation</text><text x="1130.0" y="156" text-anchor="middle" class="s">activity, popularity, matrix</text>
+<text x="1130.0" y="176" text-anchor="middle" class="m">transformation/transform.py</text><text x="1130.0" y="192" text-anchor="middle" class="m">&#8594; derived datasets (train only)</text>
+<rect x="1270" y="110" width="210" height="92" rx="10" class="box stage"/>
+<text x="1375.0" y="136" text-anchor="middle" class="t">5 Features</text><text x="1375.0" y="156" text-anchor="middle" class="s">63 catalogued features</text>
+<text x="1375.0" y="176" text-anchor="middle" class="m">features/build.py + store.py</text><text x="1375.0" y="192" text-anchor="middle" class="m">&#8594; data/features/ + registry</text>
+<rect x="1270" y="300" width="210" height="150" rx="10" class="box stage"/>
+<text x="1375.0" y="326" text-anchor="middle" class="t">6 Training (x4, parallel)</text>
+<text x="1375.0" y="348" text-anchor="middle" class="s">popularity (baseline)</text>
+<text x="1375.0" y="366" text-anchor="middle" class="s">implicit ALS (+ tuning grid)</text>
+<text x="1375.0" y="384" text-anchor="middle" class="s">explicit ALS (ratings)</text>
+<text x="1375.0" y="402" text-anchor="middle" class="s">content-based (genres)</text>
+<text x="1375.0" y="424" text-anchor="middle" class="m">training/train.py</text>
+<text x="1375.0" y="440" text-anchor="middle" class="m">&#8594; models/*.pkl + registry</text>
+<rect x="1025" y="300" width="210" height="150" rx="10" class="box stage"/>
+<text x="1130.0" y="326" text-anchor="middle" class="t">7 Evaluation</text>
+<text x="1130.0" y="348" text-anchor="middle" class="s">Precision / Recall / NDCG@10</text>
+<text x="1130.0" y="366" text-anchor="middle" class="s">Coverage, Diversity</text>
+<text x="1130.0" y="384" text-anchor="middle" class="s">RMSE, MAE</text>
+<text x="1130.0" y="424" text-anchor="middle" class="m">evaluation/evaluate.py</text>
+<text x="1130.0" y="440" text-anchor="middle" class="m">&#8594; model_evaluation.md/csv/png</text>
+<rect x="780" y="300" width="210" height="150" rx="10" class="box stage"/>
+<text x="885.0" y="326" text-anchor="middle" class="t">8 Run manifest</text>
+<text x="885.0" y="348" text-anchor="middle" class="s">timing and outputs of</text>
+<text x="885.0" y="366" text-anchor="middle" class="s">every stage</text>
+<text x="885.0" y="440" text-anchor="middle" class="m">&#8594; reports/run_manifest.json</text>
+<text x="40" y="520" class="lane">STORAGE &amp; TRACKING</text>
+<rect x="40" y="532" width="260" height="70" rx="10" class="box store"/>
+<text x="170.0" y="556" text-anchor="middle" class="t">data/ (CSV + Parquet)</text><text x="170.0" y="576" text-anchor="middle" class="s">raw / processed / features / errors</text><text x="170.0" y="592" text-anchor="middle" class="m">+ user_item_matrix.npz (sparse)</text>
+<rect x="325" y="532" width="260" height="70" rx="10" class="box store"/>
+<text x="455.0" y="556" text-anchor="middle" class="t">Feature store</text><text x="455.0" y="576" text-anchor="middle" class="s">parquet per entity + registry.json</text><text x="455.0" y="592" text-anchor="middle" class="m">same get_* API for train and predict</text>
+<rect x="610" y="532" width="260" height="70" rx="10" class="box tool"/>
+<text x="740.0" y="556" text-anchor="middle" class="t">MLflow (sqlite:///mlflow.db)</text><text x="740.0" y="576" text-anchor="middle" class="s">params, metrics, artifacts per model</text><text x="740.0" y="592" text-anchor="middle" class="m">nested runs for the tuning grid</text>
+<rect x="895" y="532" width="260" height="70" rx="10" class="box tool"/>
+<text x="1025.0" y="556" text-anchor="middle" class="t">Prefect 3</text><text x="1025.0" y="576" text-anchor="middle" class="s">task graph, retries, fan-out / fan-in</text><text x="1025.0" y="592" text-anchor="middle" class="m">UI :4200, optional daily schedule</text>
+<rect x="1180" y="532" width="260" height="70" rx="10" class="box tool"/>
+<text x="1310.0" y="556" text-anchor="middle" class="t">configs/pipeline.yaml</text><text x="1310.0" y="576" text-anchor="middle" class="s">one config for every stage</text><text x="1310.0" y="592" text-anchor="middle" class="m">paths, split, models, K</text>
+<path d="M250,147 L290,150.0" class="edge"/>
+<path d="M250,230 L290,166.0" class="dash"/>
+<path d="M500,156.0 L535,156.0" class="edge"/>
+<path d="M745,156.0 L780,156.0" class="edge"/>
+<path d="M990,156.0 L1025,156.0" class="edge"/>
+<path d="M1235,156.0 L1270,156.0" class="edge"/>
+<path d="M1375.0,202 L1375.0,300" class="edge"/>
+<path d="M1270,375.0 L1235,375.0" class="edge"/>
+<path d="M1025,375.0 L990,375.0" class="edge"/>
+<path d="M640.0,202 L640.0,532" class="dash"/>
+<path d="M1415.0,202 L1415.0,242 L455.0,242 L455.0,532" class="dash"/>
+<path d="M1375.0,450 L1375.0,500 L740.0,500 L740.0,532" class="dash"/>
+<path d="M1130.0,450 L1130.0,500 L752.0,500" class="dash"/>
+<path d="M1025.0,532 L1025.0,480 L885.0,480 L885.0,450" class="dash"/>
+<text x="300" y="330" class="s">solid arrow = task dependency in the flow</text><text x="300" y="350" class="s">dashed arrow = data written to / read from</text>
+</svg>

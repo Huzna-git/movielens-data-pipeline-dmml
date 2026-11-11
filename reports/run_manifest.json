@@ -1,0 +1,226 @@
+{
+  "flow": "recommendation-pipeline",
+  "finished_at": "2026-11-04T06:12:15+00:00",
+  "config": "recommendation-pipeline",
+  "dataset": "movielens-100k",
+  "stages": [
+    {
+      "stage": "ingestion",
+      "started_at": "2026-11-04T06:12:04+00:00",
+      "finished_at": "2026-11-04T06:12:05+00:00",
+      "seconds": 0.14,
+      "outputs": {
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/users.csv",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/items.csv",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/interactions.csv",
+        "manifest": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/ingestion_manifest.json"
+      },
+      "metrics": {
+        "users": 943,
+        "items": 1682,
+        "interactions": 100000
+      }
+    },
+    {
+      "stage": "validation",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:05+00:00",
+      "seconds": 0.35,
+      "outputs": {
+        "issues": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/errors/validation_issues.csv",
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/users_validated.parquet",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/items_validated.parquet",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/interactions_validated.parquet",
+        "report_json": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.json",
+        "report_md": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.md"
+      },
+      "metrics": {
+        "users_rows_out": 943,
+        "items_rows_out": 1682,
+        "interactions_rows_out": 100000,
+        "checks_run": 22,
+        "checks_failed": 0,
+        "checks_warned": 2,
+        "error_rows": 0
+      }
+    },
+    {
+      "stage": "preparation",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:05+00:00",
+      "seconds": 0.12,
+      "outputs": {
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/users.parquet",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/items.parquet",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/interactions.parquet",
+        "train": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/train.parquet",
+        "test": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/test.parquet",
+        "split_manifest": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/split_manifest.json"
+      },
+      "metrics": {
+        "users": 943,
+        "items": 1682,
+        "interactions": 100000,
+        "train_rows": 79619,
+        "test_rows": 20381
+      }
+    },
+    {
+      "stage": "transformation",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:05+00:00",
+      "seconds": 0.2,
+      "outputs": {
+        "user_activity_summary": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/user_activity_summary.parquet",
+        "item_popularity": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/item_popularity.parquet",
+        "item_genres": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/item_genres.parquet",
+        "user_item_matrix": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/user_item_matrix.npz",
+        "matrix_index": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/matrix_index.json"
+      },
+      "metrics": {
+        "users": 943,
+        "items": 1682,
+        "nnz": 79619,
+        "density": 0.0502
+      }
+    },
+    {
+      "stage": "features",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:05+00:00",
+      "seconds": 0.23,
+      "outputs": {
+        "user_features": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/user_features.parquet",
+        "item_features": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/item_features.parquet",
+        "interaction_features": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/interaction_features.parquet",
+        "catalog": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/feature_catalog.md"
+      },
+      "metrics": {
+        "user_features": 30,
+        "item_features": 29,
+        "interaction_features": 4,
+        "users": 943,
+        "items": 1682,
+        "pairs": 79619
+      }
+    },
+    {
+      "stage": "train:popularity",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:07+00:00",
+      "seconds": 1.07,
+      "outputs": {
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/popularity.pkl",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
+        "mlflow_run_id": "cbbf35d95d354771a355a0754213f4d5"
+      },
+      "metrics": {
+        "items_scored": 1611,
+        "global_mean_rating": 3.5806,
+        "fit_seconds": 1.07
+      }
+    },
+    {
+      "stage": "train:implicit_als",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:13+00:00",
+      "seconds": 7.9,
+      "outputs": {
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/implicit_als.pkl",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
+        "mlflow_run_id": "267930bb38c64e42a8ec860a90945d94"
+      },
+      "metrics": {
+        "interactions_fit": 79619,
+        "fit_seconds": 7.9
+      }
+    },
+    {
+      "stage": "train:als_matrix_factorization",
+      "started_at": "2026-11-04T06:12:05+00:00",
+      "finished_at": "2026-11-04T06:12:09+00:00",
+      "seconds": 3.02,
+      "outputs": {
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/als_matrix_factorization.pkl",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
+        "mlflow_run_id": "a623d3e32566431aab235e04af8ab12a"
+      },
+      "metrics": {
+        "train_rmse": 0.6768,
+        "global_mean_rating": 3.5806,
+        "fit_seconds": 3.02
+      }
+    },
+    {
+      "stage": "train:content_based_genres",
+      "started_at": "2026-11-04T06:12:07+00:00",
+      "finished_at": "2026-11-04T06:12:07+00:00",
+      "seconds": 0.2,
+      "outputs": {
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/content_based_genres.pkl",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
+        "mlflow_run_id": "5fba1d9b352140d9b07183a80667caab"
+      },
+      "metrics": {
+        "users_with_profile": 942,
+        "n_genres": 19,
+        "fit_seconds": 0.2
+      }
+    },
+    {
+      "stage": "evaluation",
+      "started_at": "2026-11-04T06:12:13+00:00",
+      "finished_at": "2026-11-04T06:12:15+00:00",
+      "seconds": 1.37,
+      "outputs": {
+        "csv": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/model_evaluation.csv",
+        "markdown": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/model_evaluation.md",
+        "figure": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/figures/metrics_comparison.png"
+      },
+      "metrics": {
+        "popularity": {
+          "precision_at_10": 0.0773,
+          "recall_at_10": 0.0659,
+          "ndcg_at_10": 0.0957,
+          "coverage": 0.0422,
+          "diversity": 0.6458,
+          "users_evaluated": 908,
+          "users_with_empty_list": 0,
+          "rmse": 1.0734,
+          "mae": 0.8587
+        },
+        "implicit_als": {
+          "precision_at_10": 0.1102,
+          "recall_at_10": 0.1341,
+          "ndcg_at_10": 0.1476,
+          "coverage": 0.3532,
+          "diversity": 0.701,
+          "users_evaluated": 908,
+          "users_with_empty_list": 0
+        },
+        "als_matrix_factorization": {
+          "precision_at_10": 0.076,
+          "recall_at_10": 0.0634,
+          "ndcg_at_10": 0.0903,
+          "coverage": 0.2027,
+          "diversity": 0.6878,
+          "users_evaluated": 908,
+          "users_with_empty_list": 0,
+          "rmse": 0.9744,
+          "mae": 0.7695
+        },
+        "content_based_genres": {
+          "precision_at_10": 0.0178,
+          "recall_at_10": 0.0167,
+          "ndcg_at_10": 0.0232,
+          "coverage": 0.481,
+          "diversity": 0.1305,
+          "users_evaluated": 908,
+          "users_with_empty_list": 0,
+          "rmse": 1.1246,
+          "mae": 0.8933
+        }
+      }
+    }
+  ]
+}

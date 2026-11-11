@@ -1,0 +1,10 @@
+2026-11-04 09:11:27 | pipeline.ingestion | INFO    | source = movielens-100k
+2026-11-04 09:11:27 | pipeline.ingestion | INFO    | downloading https://files.grouplens.org/datasets/movielens/ml-100k.zip
+2026-11-04 09:11:30 | pipeline.ingestion | INFO    | downloaded ml-100k.zip (4.9 MB, sha256 50d2a982c669...)
+2026-11-04 09:11:30 | pipeline.ingestion | INFO    | wrote users             943 rows x 5 cols -> users.csv
+2026-11-04 09:11:30 | pipeline.ingestion | INFO    | wrote items            1682 rows x 5 cols -> items.csv
+2026-11-04 09:11:30 | pipeline.ingestion | INFO    | wrote interactions   100000 rows x 4 cols -> interactions.csv
+2026-11-04 09:11:30 | pipeline.ingestion | INFO    | ingestion complete: {'users': 943, 'items': 1682, 'interactions': 100000}
+{"stage": "ingestion", "seconds": 3.47, "metrics": {"users": 943, "items": 1682, "interactions": 100000}}
+
+[exit code 0, 4.9s]

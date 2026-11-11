@@ -1,0 +1,8 @@
+2026-11-04 09:11:36 | pipeline.transformation | INFO    | user_activity_summary: 943 users; median interactions/user = 52; mean rating = 3.62
+2026-11-04 09:11:36 | pipeline.transformation | INFO    | item_popularity: 1682 items; 71 never rated in train; top-5: Star Wars (1977) (523) | Fargo (1996) (471) | Raiders of the Lost Ark (1981) (374) | Godfather, The (1972) (367) | Silence of the Lambs, The (1991) (346)
+2026-11-04 09:11:36 | pipeline.transformation | INFO    | item_genres: 1682 items x 19 genres
+2026-11-04 09:11:36 | pipeline.transformation | INFO    | user_item_matrix: shape (943, 1682), 79619 non-zeros, density 0.0502 (sparsity 94.98%)
+2026-11-04 09:11:36 | pipeline.transformation | INFO    | transformation complete
+{"stage": "transformation", "seconds": 0.2, "metrics": {"users": 943, "items": 1682, "nnz": 79619, "density": 0.0502}}
+
+[exit code 0, 1.6s]

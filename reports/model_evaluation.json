@@ -1,0 +1,52 @@
+{
+  "k": 10,
+  "relevance_threshold": 4.0,
+  "results": [
+    {
+      "model": "popularity",
+      "precision_at_10": 0.0773,
+      "recall_at_10": 0.0659,
+      "ndcg_at_10": 0.0957,
+      "coverage": 0.0422,
+      "diversity": 0.6458,
+      "users_evaluated": 908,
+      "users_with_empty_list": 0,
+      "rmse": 1.0734,
+      "mae": 0.8587
+    },
+    {
+      "model": "implicit_als",
+      "precision_at_10": 0.1102,
+      "recall_at_10": 0.1341,
+      "ndcg_at_10": 0.1476,
+      "coverage": 0.3532,
+      "diversity": 0.701,
+      "users_evaluated": 908,
+      "users_with_empty_list": 0
+    },
+    {
+      "model": "als_matrix_factorization",
+      "precision_at_10": 0.076,
+      "recall_at_10": 0.0634,
+      "ndcg_at_10": 0.0903,
+      "coverage": 0.2027,
+      "diversity": 0.6878,
+      "users_evaluated": 908,
+      "users_with_empty_list": 0,
+      "rmse": 0.9744,
+      "mae": 0.7695
+    },
+    {
+      "model": "content_based_genres",
+      "precision_at_10": 0.0178,
+      "recall_at_10": 0.0167,
+      "ndcg_at_10": 0.0232,
+      "coverage": 0.481,
+      "diversity": 0.1305,
+      "users_evaluated": 908,
+      "users_with_empty_list": 0,
+      "rmse": 1.1246,
+      "mae": 0.8933
+    }
+  ]
+}

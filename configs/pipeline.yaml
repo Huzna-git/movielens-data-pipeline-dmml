@@ -1,0 +1,92 @@
+# Single source of configuration for the pipeline. Every stage reads this file
+# through src.common.config.load_config(); nothing is hard-coded in a module.
+
+project:
+  name: recommendation-pipeline
+  random_seed: 42
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  features: data/features
+  errors: data/errors
+  models: models
+  reports: reports
+  logs: logs
+
+dataset:
+  # "movielens-100k" downloads the public GroupLens dataset (943 users, 1,682
+  # movies, 100,000 ratings, 1997-1998). "synthetic" generates a documented
+  # synthetic dataset with injected noise (see src/ingestion/synthetic.py).
+  source: movielens-100k
+  movielens:
+    url: https://files.grouplens.org/datasets/movielens/ml-100k.zip
+    sha256: 50d2a982c66986937beb9ffb3aa76efe955bf3d5c6b761f4e3a7cd717c6a3229
+  synthetic:
+    n_users: 500
+    n_items: 800
+    n_interactions: 40000
+    noise_rate: 0.03       # share of rows deliberately corrupted so validation has work to do
+
+validation:
+  rating_min: 1.0
+  rating_max: 5.0
+  # Interactions are MovieLens 100K: Sep 1997 - Apr 1998. Anything outside the
+  # window is treated as an invalid timestamp.
+  timestamp_min: "1990-01-01"
+  timestamp_max: "2030-01-01"
+  user_age_min: 5
+  user_age_max: 110
+
+split:
+  # per_user_time: each user's interactions are ordered by time and the last
+  #   `test_fraction` of them become the test set (no future leakage per user).
+  # global_time: one cut-off timestamp at the `test_fraction` quantile.
+  strategy: per_user_time
+  test_fraction: 0.2
+  min_user_interactions: 5
+
+features:
+  # A feature value is computed from TRAIN interactions only; the reference
+  # time for recency features is the latest train timestamp.
+  recency_reference: train_max_timestamp
+  rating_like_threshold: 4.0
+
+training:
+  popularity:
+    # score = log1p(count) * mean_rating ("popular AND liked"), see training/popularity.py
+    min_ratings: 1
+  implicit_als:
+    # Implicit-feedback ALS for top-K ranking (no rating prediction).
+    n_factors: 40
+    n_epochs: 12
+    regularization: 0.1
+    alpha: 5.0
+    tuning:
+      # Small grid on a validation split carved from train (time-based);
+      # every candidate is a nested MLflow run, the best is refit on all of train.
+      enabled: true
+      validation_fraction: 0.15
+      n_factors: [20, 40]
+      alpha: [5.0, 10.0, 20.0]
+      regularization: 0.1
+      n_epochs: 10
+  matrix_factorization:
+    # Explicit-rating biased ALS (predicts ratings -> RMSE/MAE); ranks by
+    # predicted rating + popularity_prior * log1p(n_ratings).
+    n_factors: 20
+    n_epochs: 12
+    regularization: 0.1
+    bias_regularization: 1.0
+    popularity_prior: 0.25
+  content_based:
+    like_threshold: 4.0
+
+evaluation:
+  k: 10
+  relevance_threshold: 4.0   # a held-out rating >= 4 counts as relevant
+
+mlflow:
+  # SQLite backend in the project root (MLflow 3 no longer accepts the ./mlruns file store).
+  tracking_uri: sqlite:///mlflow.db
+  experiment_name: recommendation-pipeline

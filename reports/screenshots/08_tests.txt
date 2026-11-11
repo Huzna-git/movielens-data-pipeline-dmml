@@ -1,0 +1,20 @@
+=========================================================== test session starts ============================================================
+platform linux -- Python 3.12.7, pytest-9.2.0, pluggy-1.7.0 -- /home/khadeeja/Documents/Projects/wms_store/project/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline
+plugins: anyio-4.16.0, typeguard-4.6.0
+collecting ... collected 9 items
+
+tests/test_features_and_models.py::test_features_match_catalog_and_round_trip PASSED                                                 [ 11%]
+tests/test_features_and_models.py::test_models_respect_the_interface PASSED                                                          [ 22%]
+tests/test_metrics.py::test_precision_recall_ndcg_known_values PASSED                                                                [ 33%]
+tests/test_metrics.py::test_coverage_and_diversity PASSED                                                                            [ 44%]
+tests/test_metrics.py::test_rmse_mae PASSED                                                                                          [ 55%]
+tests/test_preparation.py::test_per_user_split_is_chronological_and_sized PASSED                                                     [ 66%]
+tests/test_preparation.py::test_global_split_uses_one_cutoff PASSED                                                                  [ 77%]
+tests/test_validation.py::test_every_bad_record_is_flagged_and_removed PASSED                                                        [ 88%]
+tests/test_validation.py::test_clean_data_passes PASSED                                                                              [100%]
+
+============================================================ 9 passed in 0.68s =============================================================
+
+[exit code 0, 1.0s]

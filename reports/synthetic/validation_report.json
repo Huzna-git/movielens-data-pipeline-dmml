@@ -1,0 +1,201 @@
+{
+  "generated_at": "2026-11-04T06:11:59+00:00",
+  "tables": {
+    "users": {
+      "rows_in": 500,
+      "error_rows": 0,
+      "warning_rows": 0,
+      "rows_out": 500
+    },
+    "items": {
+      "rows_in": 800,
+      "error_rows": 0,
+      "warning_rows": 0,
+      "rows_out": 800
+    },
+    "interactions": {
+      "rows_in": 39161,
+      "error_rows": 1400,
+      "warning_rows": 0,
+      "rows_out": 37761
+    }
+  },
+  "checks": [
+    {
+      "table": "users",
+      "check": "invalid_type",
+      "columns": "user_id,age,gender,occupation,zip_code",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "users",
+      "check": "missing_value",
+      "columns": "non-nullable columns",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "users",
+      "check": "duplicate_row",
+      "columns": "all",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "users",
+      "check": "conflicting_duplicate_key",
+      "columns": "user_id",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "invalid_type",
+      "columns": "item_id,title,release_date,imdb_url,genres",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "missing_value",
+      "columns": "non-nullable columns",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "duplicate_row",
+      "columns": "all",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "conflicting_duplicate_key",
+      "columns": "item_id",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "interactions",
+      "check": "invalid_type",
+      "columns": "user_id,item_id,rating,timestamp",
+      "severity": "error",
+      "failures": 199,
+      "status": "FAIL"
+    },
+    {
+      "table": "interactions",
+      "check": "missing_value",
+      "columns": "non-nullable columns",
+      "severity": "error",
+      "failures": 395,
+      "status": "FAIL"
+    },
+    {
+      "table": "interactions",
+      "check": "duplicate_row",
+      "columns": "all",
+      "severity": "error",
+      "failures": 233,
+      "status": "FAIL"
+    },
+    {
+      "table": "interactions",
+      "check": "conflicting_duplicate_key",
+      "columns": "user_id,item_id",
+      "severity": "error",
+      "failures": 103,
+      "status": "FAIL"
+    },
+    {
+      "table": "users",
+      "check": "duplicate_key",
+      "columns": "user_id",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "users",
+      "check": "out_of_range",
+      "columns": "age in [5, 110]",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "users",
+      "check": "invalid_category",
+      "columns": "gender in {M,F}",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "duplicate_key",
+      "columns": "item_id",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "unparseable_date",
+      "columns": "release_date (dd-Mon-yyyy)",
+      "severity": "error",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "missing_release_date",
+      "columns": "release_date",
+      "severity": "warning",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "items",
+      "check": "duplicate_title",
+      "columns": "title",
+      "severity": "warning",
+      "failures": 0,
+      "status": "PASS"
+    },
+    {
+      "table": "interactions",
+      "check": "out_of_range",
+      "columns": "rating in [1.0, 5.0]; timestamp in [2020-01-01, 2030-01-01]",
+      "severity": "error",
+      "failures": 394,
+      "status": "FAIL"
+    },
+    {
+      "table": "interactions",
+      "check": "unknown_user",
+      "columns": "user_id -> users.user_id",
+      "severity": "error",
+      "failures": 194,
+      "status": "FAIL"
+    },
+    {
+      "table": "interactions",
+      "check": "unknown_item",
+      "columns": "item_id -> items.item_id",
+      "severity": "error",
+      "failures": 189,
+      "status": "FAIL"
+    }
+  ]
+}

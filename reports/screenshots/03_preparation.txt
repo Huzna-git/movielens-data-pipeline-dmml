@@ -1,0 +1,8 @@
+2026-11-04 09:11:34 | pipeline.preparation | INFO    | cleaned: users 943 | items 1682 | interactions 100000
+2026-11-04 09:11:34 | pipeline.preparation | INFO    | items with no release date: 1 (kept, release_year flagged missing)
+2026-11-04 09:11:34 | pipeline.preparation | INFO    | interaction window: 1997-09-20 .. 1998-04-22
+2026-11-04 09:11:34 | pipeline.preparation | INFO    | split per_user_time: train 79619 rows / test 20381 rows (20.4%); 88 test rows name an item unseen in train
+2026-11-04 09:11:34 | pipeline.preparation | INFO    | preparation complete
+{"stage": "preparation", "seconds": 0.13, "metrics": {"users": 943, "items": 1682, "interactions": 100000, "train_rows": 79619, "test_rows": 20381}}
+
+[exit code 0, 1.5s]

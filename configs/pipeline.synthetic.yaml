@@ -1,0 +1,66 @@
+# Same pipeline, synthetic data with injected noise, written to its own folders
+# so it never overwrites the MovieLens run.  `make synthetic`.
+project:
+  name: recommendation-pipeline-synthetic
+  random_seed: 42
+
+paths:
+  raw: data/synthetic/raw
+  processed: data/synthetic/processed
+  features: data/synthetic/features
+  errors: data/synthetic/errors
+  models: models/synthetic
+  reports: reports/synthetic
+  logs: logs/synthetic
+
+dataset:
+  source: synthetic
+  synthetic:
+    n_users: 500
+    n_items: 800
+    n_interactions: 40000
+    noise_rate: 0.03
+
+validation:
+  rating_min: 1.0
+  rating_max: 5.0
+  timestamp_min: "2020-01-01"
+  timestamp_max: "2030-01-01"
+  user_age_min: 5
+  user_age_max: 110
+
+split:
+  strategy: per_user_time
+  test_fraction: 0.2
+  min_user_interactions: 5
+
+features:
+  recency_reference: train_max_timestamp
+  rating_like_threshold: 4.0
+
+training:
+  popularity:
+    min_ratings: 1
+  implicit_als:
+    n_factors: 20
+    n_epochs: 10
+    regularization: 0.1
+    alpha: 5.0
+    tuning:
+      enabled: false
+  matrix_factorization:
+    n_factors: 20
+    n_epochs: 10
+    regularization: 0.1
+    bias_regularization: 1.0
+    popularity_prior: 0.25
+  content_based:
+    like_threshold: 4.0
+
+evaluation:
+  k: 10
+  relevance_threshold: 4.0
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  experiment_name: recommendation-pipeline-synthetic

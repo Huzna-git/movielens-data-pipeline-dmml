@@ -1,6 +1,7 @@
 """The validation stage must catch every class of bad record and separate it."""
 import pandas as pd
 
+from src.ingestion.faults import inject_faults
 from src.validation.validate import validate_tables
 
 
@@ -53,3 +54,24 @@ def test_clean_data_passes(cfg):
     assert issues.empty
     assert all(s["rows_out"] == 1 for s in stats.values())
     assert clean["interactions"]["rating"].dtype == pd.Float64Dtype()
+
+
+def test_injected_faults_are_all_rejected_and_the_clean_data_is_untouched(cfg):
+    """Fault injection appends corrupt rows; validation must reject every one and keep every real row."""
+    n_u, n_i = 12, 15
+    users = pd.DataFrame({"user_id": [str(i) for i in range(1, n_u + 1)], "age": ["30"] * n_u, "gender": ["M", "F"] * (n_u // 2),
+                          "occupation": ["student"] * n_u, "zip_code": ["85711"] * n_u})
+    items = pd.DataFrame({"item_id": [str(i) for i in range(1, n_i + 1)], "title": [f"Movie {i} (1995)" for i in range(1, n_i + 1)],
+                          "release_date": ["01-Jan-1995"] * n_i, "imdb_url": ["http://x"] * n_i, "genres": ["Action"] * n_i})
+    inter = pd.DataFrame([{"user_id": str(u), "item_id": str(i), "rating": str(1 + (u + i) % 5), "timestamp": str(880000000 + u * 100 + i)}
+                          for u in range(1, n_u + 1) for i in range(1, n_i + 1)])
+    raw = {"users": users, "items": items, "interactions": inter}
+    faulty, injected = inject_faults(raw, {"interaction_rows": 6, "user_rows": 2, "item_rows": 2}, seed=7)
+    for name in raw:   # appended, never overwritten: the original rows are still the head of the table
+        assert len(faulty[name]) == len(raw[name]) + sum(v for k, v in injected.items() if k.startswith(name + "."))
+        assert faulty[name].head(len(raw[name])).astype(str).equals(raw[name].astype(str))
+    clean, issues, stats = validate_tables(cfg, {n: df.astype("string") for n, df in faulty.items()})
+    for name in raw:
+        assert stats[name]["rows_out"] == len(raw[name]), name
+        assert stats[name]["error_rows"] == len(faulty[name]) - len(raw[name]), name
+    assert sorted(clean["interactions"]["user_id"].astype(int).tolist()) == sorted(inter["user_id"].astype(int).tolist())

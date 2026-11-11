@@ -9,7 +9,9 @@ import numpy as np
 import pandas as pd
 
 from ..common.config import load_config, path_of
-from ..common.io import read_parquet
+import hashlib
+
+from ..common.io import read_parquet, write_json
 from ..common.logging import get_logger
 from ..common.stage import StageResult
 from ..transformation.transform import GENRE_COLUMNS, item_genre_table, item_popularity, user_activity_summary
@@ -85,6 +87,37 @@ def compute_interaction_features(train: pd.DataFrame, user_f: pd.DataFrame, item
     return x[["user_id", "item_id"] + FEATURE_NAMES["interaction"]].reset_index(drop=True)
 
 
+def feature_version(reference_ts: int, train_rows: int, like_threshold: float) -> str:
+    """A short id of WHAT was computed (the catalog) from WHICH data (reference time, train size)."""
+    blob = "|".join([*FEATURE_NAMES["user"], *FEATURE_NAMES["item"], *FEATURE_NAMES["interaction"],
+                     str(reference_ts), str(train_rows), str(like_threshold)])
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:10]
+
+
+def write_feature_metadata(store: FeatureStore, train: pd.DataFrame, uf: pd.DataFrame, itf: pd.DataFrame,
+                           xf: pd.DataFrame, reference_ts: int, like_threshold: float):
+    """``data/features/feature_metadata.json``: the as-of time, the version, the sizes and the
+    defaults a consumer uses for an entity the store has never seen (a cold-start user)."""
+    global_mean = float(train["rating"].mean())
+    user_defaults = {"user_n_interactions": 0, "user_n_liked": 0, "user_like_rate": 0.0, "user_mean_rating": global_mean,
+                     "user_rating_std": 0.0, "user_active_span_days": 0.0, "user_preferred_genre": "none",
+                     **{c: 0.0 for c in PREF_COLUMNS}}
+    meta = {
+        "as_of": pd.to_datetime(reference_ts, unit="s", utc=True).isoformat(),
+        "reference_ts": int(reference_ts),
+        "like_threshold": like_threshold,
+        "global_mean_rating": global_mean,
+        "user_defaults": user_defaults,
+        "item_defaults": {"item_n_ratings": 0, "item_mean_rating": global_mean, "item_like_rate": 0.0, "item_popularity_score": 0.0},
+        "feature_version": feature_version(reference_ts, len(train), like_threshold),
+        "n_user_features": len(FEATURE_NAMES["user"]),
+        "n_item_features": len(FEATURE_NAMES["item"]),
+        "n_interaction_features": len(FEATURE_NAMES["interaction"]),
+        "rows": {"users": int(len(uf)), "items": int(len(itf)), "interactions": int(len(xf))},
+    }
+    return write_json(meta, store.root / "feature_metadata.json")
+
+
 def run_feature_engineering(cfg: dict | None = None) -> StageResult:
     cfg = cfg or load_config()
     log = get_logger("features", cfg["paths"]["logs"])
@@ -109,6 +142,7 @@ def run_feature_engineering(cfg: dict | None = None) -> StageResult:
     xf = compute_interaction_features(train, uf, itf)
     res.outputs["interaction_features"] = str(store.write("interaction", xf, meta))
     log.info("interaction features: %5d rows x %2d features -> %s", len(xf), len(FEATURE_NAMES["interaction"]), res.outputs["interaction_features"])
+    res.outputs["metadata"] = str(write_feature_metadata(store, train, uf, itf, xf, reference_ts, like))
     res.outputs["catalog"] = str(write_catalog(path_of(cfg, "reports") / "feature_catalog.md"))
     log.info("feature catalog written: %s (%d features)", res.outputs["catalog"], sum(len(v) for v in FEATURE_NAMES.values()))
     log.info("sample user features:\n%s", uf[["user_id", "user_n_interactions", "user_mean_rating", "user_days_since_last_interaction", "user_preferred_genre"]].head(3).to_string(index=False))

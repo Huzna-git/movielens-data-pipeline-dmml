@@ -1,0 +1,16 @@
+source_row,reasons,user_id,age,gender,occupation,zip_code
+943,duplicate_key;duplicate_row,190,30,M,administrator,95938
+944,duplicate_key;duplicate_row,657,26,F,none,78704
+945,duplicate_key;duplicate_row,107,39,M,scientist,60466
+946,duplicate_key;duplicate_row,476,28,M,student,60440
+947,duplicate_key;duplicate_row,118,21,M,administrator,90210
+948,out_of_range,700000,-3,M,writer,92154
+949,out_of_range,700001,-3,M,other,91606
+950,invalid_type;missing_value,700002,abc,M,engineer,00000
+951,out_of_range,700003,200,M,student,21218
+952,invalid_type;missing_value,700004,abc,F,librarian,02143
+953,invalid_category,710000,33,X,marketing,46032
+954,invalid_category,710001,57,Q,retired,98257
+955,invalid_category,710002,17,X,student,60402
+956,invalid_category,710003,51,Q,librarian,91105
+957,invalid_category,710004,18,Q,student,55105

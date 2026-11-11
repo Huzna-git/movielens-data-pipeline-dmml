@@ -13,10 +13,19 @@ data/features/*
 data/errors/*
 data/synthetic/
 !data/*/.gitkeep
+# ...except the small artefacts that document a run: the rejected rows and the two metadata files
+!data/errors/*_errors.csv
+!data/features/feature_metadata.json
+!data/processed/split_metadata.json
 
 # Trained models and experiment tracking
 models/*
 !models/.gitkeep
+# ...except each model's meta.json and the training summary (the .pkl files are rebuilt by `make train`)
+!models/*/
+models/*/*
+!models/*/meta.json
+!models/training_summary.json
 mlruns/
 mlflow.db
 mlartifacts/

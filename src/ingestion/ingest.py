@@ -12,6 +12,7 @@ from ..common.io import write_csv, write_json, utc_now
 from ..common.logging import get_logger
 from ..common.stage import StageResult
 from . import movielens, synthetic
+from .faults import inject_faults
 
 
 def run_ingestion(cfg: dict | None = None) -> StageResult:
@@ -28,6 +29,12 @@ def run_ingestion(cfg: dict | None = None) -> StageResult:
         archive = movielens.download(ml["url"], raw / "ml-100k.zip", ml.get("sha256"), log)
         tables = movielens.extract_tables(archive)
         manifest.update({"url": ml["url"], "sha256": movielens.sha256_of(archive)})
+        fi = cfg["dataset"].get("fault_injection", {})
+        if fi.get("enabled"):
+            # the source is clean; append a counted set of corrupt rows so validation has work to do
+            tables, injected = inject_faults(tables, fi, cfg["project"]["random_seed"])
+            manifest["fault_injection"] = injected
+            log.info("fault injection: %d corrupt rows appended %s", sum(injected.values()), injected)
     elif source == "synthetic":
         s = cfg["dataset"]["synthetic"]
         tables, corruption = synthetic.generate(

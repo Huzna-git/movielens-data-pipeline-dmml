@@ -1,6 +1,6 @@
 """Orchestration: the end-to-end pipeline as a Prefect flow.
 
-    Ingest -> Validate -> Prepare -> Transform -> Features -> Train (x3, in parallel) -> Evaluate -> Manifest
+    Ingest -> Validate -> Prepare -> Transform -> Features -> Train (4 base models in parallel, then the hybrid) -> Evaluate -> Manifest
 
 Each task wraps one stage function from ``src``; the stage result of the
 upstream task is passed as an input so Prefect records the dependency, and a
@@ -32,7 +32,7 @@ from src.evaluation.evaluate import run_evaluation  # noqa: E402
 from src.features.build import run_feature_engineering  # noqa: E402
 from src.ingestion.ingest import run_ingestion  # noqa: E402
 from src.preparation.prepare import run_preparation  # noqa: E402
-from src.training.train import MODEL_NAMES, train_model  # noqa: E402
+from src.training.train import BASE_MODEL_NAMES, train_model  # noqa: E402
 from src.transformation.transform import run_transformation  # noqa: E402
 from src.validation.validate import run_validation  # noqa: E402
 
@@ -83,7 +83,7 @@ def write_manifest(cfg: dict, stages: list[dict]) -> str:
     return str(path)
 
 
-@flow(name="recommendation-pipeline", log_prints=True, task_runner=ThreadPoolTaskRunner(max_workers=3))
+@flow(name="recommendation-pipeline", log_prints=True, task_runner=ThreadPoolTaskRunner(max_workers=4))
 def recommendation_pipeline(config_path: str | None = None) -> dict:
     log = get_run_logger()
     cfg = load_config(config_path)
@@ -93,8 +93,9 @@ def recommendation_pipeline(config_path: str | None = None) -> dict:
     s3 = prepare(cfg, s2)
     s4 = transform(cfg, s3)
     s5 = features(cfg, s4)
-    futures = [train.submit(cfg, name, s5) for name in MODEL_NAMES]   # fan-out: three models in parallel
-    trained = [f.result() for f in futures]                            # fan-in
+    futures = [train.submit(cfg, name, s5) for name in BASE_MODEL_NAMES]   # fan-out: the base models in parallel
+    trained = [f.result() for f in futures]                                 # fan-in
+    trained.append(train(cfg, "hybrid", trained[-1]))                       # the hybrid wraps the trained implicit ALS
     s7 = evaluate(cfg, trained)
     manifest = write_manifest(cfg, [s1, s2, s3, s4, s5, *trained, s7])
     best = max(s7["metrics"].items(), key=lambda kv: kv[1][f"ndcg_at_{cfg['evaluation']['k']}"])[0]

@@ -22,6 +22,15 @@ dataset:
   movielens:
     url: https://files.grouplens.org/datasets/movielens/ml-100k.zip
     sha256: 50d2a982c66986937beb9ffb3aa76efe955bf3d5c6b761f4e3a7cd717c6a3229
+  # MovieLens is already clean, so a small, counted set of corrupt records is
+  # APPENDED at ingestion (never written over a real row) to prove the validation
+  # layer: the rejected rows land in data/errors/<table>_errors.csv and the clean
+  # output is exactly the original dataset.  Set enabled: false to ingest untouched.
+  fault_injection:
+    enabled: true
+    interaction_rows: 40   # per error type (9 types)
+    user_rows: 5           # per error type (3 types)
+    item_rows: 5           # per error type (3 types)
   synthetic:
     n_users: 500
     n_items: 800
@@ -81,6 +90,19 @@ training:
     popularity_prior: 0.25
   content_based:
     like_threshold: 4.0
+  hybrid:
+    # z(implicit ALS) * w_cf + z(genre affinity) * w_genre + z(popularity) * w_popularity.
+    # The collaborative half is the trained implicit_als model; the weights below are
+    # the fallback when tuning is off.
+    w_cf: 1.0
+    w_genre: 0.25
+    w_popularity: 0.5
+    tuning:
+      # Grid on a validation split carved from TRAIN (never test); every point is a nested MLflow run.
+      enabled: true
+      validation_fraction: 0.15
+      w_genre: [0.0, 0.1, 0.25, 0.5, 1.0]
+      w_popularity: [0.0, 0.25, 0.5, 1.0, 2.0]
 
 evaluation:
   k: 10

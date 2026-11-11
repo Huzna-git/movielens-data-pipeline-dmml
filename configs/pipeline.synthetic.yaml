@@ -56,6 +56,19 @@ training:
     popularity_prior: 0.25
   content_based:
     like_threshold: 4.0
+  hybrid:
+    # z(implicit ALS) * w_cf + z(genre affinity) * w_genre + z(popularity) * w_popularity.
+    # The collaborative half is the trained implicit_als model; the weights below are
+    # the fallback when tuning is off.
+    w_cf: 1.0
+    w_genre: 0.25
+    w_popularity: 0.5
+    tuning:
+      # Grid on a validation split carved from TRAIN (never test); every point is a nested MLflow run.
+      enabled: true
+      validation_fraction: 0.15
+      w_genre: [0.0, 0.25, 0.5]
+      w_popularity: [0.0, 0.5, 1.0]
 
 evaluation:
   k: 10

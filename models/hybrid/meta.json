@@ -1,0 +1,27 @@
+{
+  "name": "hybrid",
+  "class": "HybridRecommender",
+  "params": {
+    "w_cf": 1.0,
+    "w_genre": 1.0,
+    "w_popularity": 1.0,
+    "cf_n_factors": 20,
+    "cf_n_epochs": 10,
+    "cf_regularization": 0.1,
+    "cf_alpha": 5.0,
+    "cf_seed": 42,
+    "blend": "z(implicit ALS) + z(genre affinity) + z(popularity)"
+  },
+  "train_metrics": {
+    "interactions_fit": 79619,
+    "users_with_profile": 942,
+    "fit_seconds": 5.17
+  },
+  "train_seconds": 5.17,
+  "tuned_on_validation_split": true,
+  "mlflow_run_id": "8e79132841b84b1eb2d29ace09fefb26",
+  "feature_version": "09dbf74de6",
+  "dataset": "movielens-100k",
+  "train_rows": 79619,
+  "trained_at": "2026-11-11T04:33:11+00:00"
+}

@@ -40,6 +40,6 @@ report:          ## rebuild reports/final_report.pdf from reports/final_report.m
 	$(PY) scripts/build_report.py
 
 clean:           ## remove generated data, models and tracking state
-	rm -rf data/raw/* data/processed/* data/features/* data/errors/* models/*.pkl models/*.csv models/registry.json \
+	rm -rf data/raw/* data/processed/* data/features/* data/errors/* models/* \
 	       mlflow.db mlartifacts mlruns logs reports/per_user
-	touch data/raw/.gitkeep data/processed/.gitkeep data/features/.gitkeep data/errors/.gitkeep
+	touch data/raw/.gitkeep data/processed/.gitkeep data/features/.gitkeep data/errors/.gitkeep models/.gitkeep

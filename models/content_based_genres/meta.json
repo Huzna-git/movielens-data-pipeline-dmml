@@ -1,0 +1,22 @@
+{
+  "name": "content_based_genres",
+  "class": "ContentBasedRecommender",
+  "params": {
+    "item_representation": "genre one-hot (feature store)",
+    "user_representation": "user_pref_* genre profile (feature store)",
+    "like_threshold": 4.0,
+    "similarity": "cosine"
+  },
+  "train_metrics": {
+    "users_with_profile": 942,
+    "n_genres": 19,
+    "fit_seconds": 4.5
+  },
+  "train_seconds": 4.5,
+  "tuned_on_validation_split": false,
+  "mlflow_run_id": "f5d634c763ca499ea4a293279eaa709f",
+  "feature_version": "09dbf74de6",
+  "dataset": "movielens-100k",
+  "train_rows": 79619,
+  "trained_at": "2026-11-11T04:33:00+00:00"
+}

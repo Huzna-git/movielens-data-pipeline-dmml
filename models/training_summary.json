@@ -1,0 +1,28 @@
+{
+  "runs": {
+    "popularity": "18ba2905c9a34d8891428a3faebe2d0f",
+    "content_based_genres": "f5d634c763ca499ea4a293279eaa709f",
+    "als_matrix_factorization": "7bb3abbf95064c11b54cd23eddd8e613",
+    "implicit_als": "b6eafe0c79534237a5685493fa673151",
+    "hybrid": "8e79132841b84b1eb2d29ace09fefb26"
+  },
+  "trained_at": {
+    "popularity": "2026-11-11T04:33:00+00:00",
+    "content_based_genres": "2026-11-11T04:33:00+00:00",
+    "als_matrix_factorization": "2026-11-11T04:33:01+00:00",
+    "implicit_als": "2026-11-11T04:33:06+00:00",
+    "hybrid": "2026-11-11T04:33:11+00:00"
+  },
+  "implicit_als_params": {
+    "n_factors": 20,
+    "n_epochs": 10,
+    "regularization": 0.1,
+    "alpha": 5.0
+  },
+  "best_hybrid_weights": {
+    "w_cf": 1.0,
+    "w_genre": 1.0,
+    "w_popularity": 1.0
+  },
+  "hybrid_tuned_on_validation_split": true
+}

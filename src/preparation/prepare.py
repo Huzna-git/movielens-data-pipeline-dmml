@@ -3,7 +3,8 @@
 Cleans and standardizes the validated tables (formats, missing values, residual
 duplicates), then creates the train/test datasets with a TIME-BASED split.
 Outputs land in ``data/processed``: users, items, interactions, train, test
-(parquet) and ``split_manifest.json``.
+(parquet) and ``split_metadata.json`` (how the split was cut, row and user counts,
+the two time ranges).
 """
 from __future__ import annotations
 
@@ -97,6 +98,7 @@ def run_preparation(cfg: dict | None = None) -> StageResult:
         "train_rows": len(train), "test_rows": len(test),
         "train_users": len(train_users), "test_users": int(test["user_id"].nunique()),
         "train_items": len(train_items), "test_items": int(test["item_id"].nunique()),
+        "test_users_seen_in_train": int(test.loc[test["user_id"].isin(train_users), "user_id"].nunique()),
         "test_users_unseen_in_train": int((~test["user_id"].isin(train_users)).sum()),
         "test_rows_with_item_unseen_in_train": int((~test["item_id"].isin(train_items)).sum()),
         "train_time_range": [train["ts"].min().isoformat(), train["ts"].max().isoformat()],
@@ -107,7 +109,7 @@ def run_preparation(cfg: dict | None = None) -> StageResult:
 
     for name, df in {"users": users, "items": items, "interactions": inter, "train": train, "test": test}.items():
         res.outputs[name] = str(write_parquet(df, proc / f"{name}.parquet"))
-    res.outputs["split_manifest"] = str(write_json(info, proc / "split_manifest.json"))
+    res.outputs["split_metadata"] = str(write_json(info, proc / "split_metadata.json"))
     res.metrics = {"users": len(users), "items": len(items), "interactions": len(inter),
                    "train_rows": len(train), "test_rows": len(test)}
     log.info("preparation complete")

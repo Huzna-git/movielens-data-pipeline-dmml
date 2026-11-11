@@ -22,7 +22,7 @@ from ..common.io import read_json, read_parquet, write_csv, write_json
 from ..common.logging import get_logger
 from ..common.stage import StageResult
 from ..training.base import Recommender
-from ..training.train import setup_mlflow
+from ..training.train import MODEL_NAMES, setup_mlflow
 from ..transformation.transform import GENRE_COLUMNS
 from . import metrics as M
 
@@ -73,7 +73,7 @@ def write_results(results: pd.DataFrame, k: int, reports: Path, cfg: dict) -> tu
     rank_cols = cols[:5]
     fig, axes = plt.subplots(1, 2, figsize=(11, 4), gridspec_kw={"width_ratios": [5, 2]})
     x = np.arange(len(rank_cols)); w = 0.8 / len(table)
-    palette = ["#6B7280", "#2563EB", "#16A34A", "#D97706"]
+    palette = ["#6B7280", "#2563EB", "#16A34A", "#D97706", "#7C3AED"]
     for n, (name, row) in enumerate(table.iterrows()):
         axes[0].bar(x + n * w - 0.4 + w / 2, row[rank_cols].to_numpy(dtype=float), w, label=name, color=palette[n % len(palette)])
     axes[0].set_xticks(x); axes[0].set_xticklabels([c.replace("_at_", "@") for c in rank_cols]); axes[0].set_ylim(0, 1)
@@ -105,7 +105,8 @@ def run_evaluation(cfg: dict | None = None) -> StageResult:
              k, thr, len(test), test["user_id"].nunique(), len(items))
 
     results = []
-    for name, entry in registry.items():
+    order = {n: i for i, n in enumerate(MODEL_NAMES)}
+    for name, entry in sorted(registry.items(), key=lambda kv: order.get(kv[0], len(order))):
         model = Recommender.load(Path(entry["path"]))
         m, per_user = evaluate_model(model, train, test, item_vectors, len(items), k, thr)
         write_csv(per_user, reports / "per_user" / f"{name}_per_user_metrics.csv")

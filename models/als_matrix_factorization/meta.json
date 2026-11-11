@@ -1,0 +1,25 @@
+{
+  "name": "als_matrix_factorization",
+  "class": "ALSMatrixFactorization",
+  "params": {
+    "n_factors": 20,
+    "n_epochs": 12,
+    "regularization": 0.1,
+    "bias_regularization": 1.0,
+    "popularity_prior": 0.25,
+    "seed": 42,
+    "solver": "ALS (biased, ridge per row)"
+  },
+  "train_metrics": {
+    "train_rmse": 0.6768,
+    "global_mean_rating": 3.5806,
+    "fit_seconds": 5.74
+  },
+  "train_seconds": 5.74,
+  "tuned_on_validation_split": false,
+  "mlflow_run_id": "7bb3abbf95064c11b54cd23eddd8e613",
+  "feature_version": "09dbf74de6",
+  "dataset": "movielens-100k",
+  "train_rows": 79619,
+  "trained_at": "2026-11-11T04:33:01+00:00"
+}

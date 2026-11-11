@@ -1,68 +1,68 @@
 # Data validation report
 
-Generated: 2026-11-04T06:12:05+00:00
+Generated: 2026-11-11T04:32:55+00:00
 
 ## Tables
 
 | Table | Rows in | Error rows (removed) | Warning rows (kept) | Rows out |
 |---|---:|---:|---:|---:|
-| users | 943 | 0 | 0 | 943 |
-| items | 1,682 | 0 | 37 | 1,682 |
-| interactions | 100,000 | 0 | 0 | 100,000 |
+| users | 958 | 15 | 0 | 943 |
+| items | 1,697 | 15 | 41 | 1,682 |
+| interactions | 100,360 | 360 | 0 | 100,000 |
 
 ## Checks
 
 | Table | Check | Column(s) | Severity | Failures | Status |
 |---|---|---|---|---:|---|
-| users | invalid_type | user_id,age,gender,occupation,zip_code | error | 0 | PASS |
-| users | missing_value | non-nullable columns | error | 0 | PASS |
-| users | duplicate_row | all | error | 0 | PASS |
+| users | invalid_type | user_id,age,gender,occupation,zip_code | error | 2 | FAIL |
+| users | missing_value | non-nullable columns | error | 2 | FAIL |
+| users | duplicate_row | all | error | 5 | FAIL |
 | users | conflicting_duplicate_key | user_id | error | 0 | PASS |
 | items | invalid_type | item_id,title,release_date,imdb_url,genres | error | 0 | PASS |
-| items | missing_value | non-nullable columns | error | 0 | PASS |
-| items | duplicate_row | all | error | 0 | PASS |
+| items | missing_value | non-nullable columns | error | 5 | FAIL |
+| items | duplicate_row | all | error | 5 | FAIL |
 | items | conflicting_duplicate_key | item_id | error | 0 | PASS |
-| interactions | invalid_type | user_id,item_id,rating,timestamp | error | 0 | PASS |
-| interactions | missing_value | non-nullable columns | error | 0 | PASS |
-| interactions | duplicate_row | all | error | 0 | PASS |
-| interactions | conflicting_duplicate_key | user_id,item_id | error | 0 | PASS |
-| users | duplicate_key | user_id | error | 0 | PASS |
-| users | out_of_range | age in [5, 110] | error | 0 | PASS |
-| users | invalid_category | gender in {M,F} | error | 0 | PASS |
-| items | duplicate_key | item_id | error | 0 | PASS |
-| items | unparseable_date | release_date (dd-Mon-yyyy) | error | 0 | PASS |
+| interactions | invalid_type | user_id,item_id,rating,timestamp | error | 66 | FAIL |
+| interactions | missing_value | non-nullable columns | error | 160 | FAIL |
+| interactions | duplicate_row | all | error | 40 | FAIL |
+| interactions | conflicting_duplicate_key | user_id,item_id | error | 202 | FAIL |
+| users | duplicate_key | user_id | error | 5 | FAIL |
+| users | out_of_range | age in [5, 110] | error | 3 | FAIL |
+| users | invalid_category | gender in {M,F} | error | 5 | FAIL |
+| items | duplicate_key | item_id | error | 5 | FAIL |
+| items | unparseable_date | release_date (dd-Mon-yyyy) | error | 5 | FAIL |
 | items | missing_release_date | release_date | warning | 1 | WARN |
-| items | duplicate_title | title | warning | 36 | WARN |
-| interactions | out_of_range | rating in [1.0, 5.0]; timestamp in [1990-01-01, 2030-01-01] | error | 0 | PASS |
-| interactions | unknown_user | user_id -> users.user_id | error | 0 | PASS |
-| interactions | unknown_item | item_id -> items.item_id | error | 0 | PASS |
+| items | duplicate_title | title | warning | 45 | WARN |
+| interactions | out_of_range | rating in [1.0, 5.0]; timestamp in [1990-01-01, 2030-01-01] | error | 80 | FAIL |
+| interactions | unknown_user | user_id -> users.user_id | error | 40 | FAIL |
+| interactions | unknown_item | item_id -> items.item_id | error | 40 | FAIL |
 
 ## Sample of flagged rows (first 25)
 
-| table   |   row | column       | check                | severity   | value                          |
-|:--------|------:|:-------------|:---------------------|:-----------|:-------------------------------|
-| items   |   266 | release_date | missing_release_date | warning    | <NA>                           |
-| items   |   245 | title        | duplicate_title      | warning    | Chasing Amy (1997)             |
-| items   |   265 | title        | duplicate_title      | warning    | Kull the Conqueror (1997)      |
-| items   |   267 | title        | duplicate_title      | warning    | Chasing Amy (1997)             |
-| items   |   296 | title        | duplicate_title      | warning    | Ulee's Gold (1997)             |
-| items   |   302 | title        | duplicate_title      | warning    | Ulee's Gold (1997)             |
-| items   |   303 | title        | duplicate_title      | warning    | Fly Away Home (1996)           |
-| items   |   304 | title        | duplicate_title      | warning    | Ice Storm, The (1997)          |
-| items   |   308 | title        | duplicate_title      | warning    | Deceiver (1997)                |
-| items   |   328 | title        | duplicate_title      | warning    | Desperate Measures (1998)      |
-| items   |   347 | title        | duplicate_title      | warning    | Desperate Measures (1998)      |
-| items   |   499 | title        | duplicate_title      | warning    | Fly Away Home (1996)           |
-| items   |   572 | title        | duplicate_title      | warning    | Body Snatchers (1993)          |
-| items   |   669 | title        | duplicate_title      | warning    | Body Snatchers (1993)          |
-| items   |   679 | title        | duplicate_title      | warning    | Kull the Conqueror (1997)      |
-| items   |   710 | title        | duplicate_title      | warning    | Substance of Fire, The (1996)  |
-| items   |   864 | title        | duplicate_title      | warning    | Ice Storm, The (1997)          |
-| items   |   875 | title        | duplicate_title      | warning    | Money Talks (1997)             |
-| items   |   877 | title        | duplicate_title      | warning    | That Darn Cat! (1997)          |
-| items   |   880 | title        | duplicate_title      | warning    | Money Talks (1997)             |
-| items   |  1002 | title        | duplicate_title      | warning    | That Darn Cat! (1997)          |
-| items   |  1174 | title        | duplicate_title      | warning    | Hugo Pool (1997)               |
-| items   |  1233 | title        | duplicate_title      | warning    | Chairman of the Board (1998)   |
-| items   |  1255 | title        | duplicate_title      | warning    | Designated Mourner, The (1997) |
-| items   |  1256 | title        | duplicate_title      | warning    | Designated Mourner, The (1997) |
+| table   |   row | column   | check            | severity   | value                        |
+|:--------|------:|:---------|:-----------------|:-----------|:-----------------------------|
+| users   |   950 | age      | invalid_type     | error      | abc                          |
+| users   |   952 | age      | invalid_type     | error      | abc                          |
+| users   |   943 | user_id  | duplicate_key    | error      | 190                          |
+| users   |   944 | user_id  | duplicate_key    | error      | 657                          |
+| users   |   945 | user_id  | duplicate_key    | error      | 107                          |
+| users   |   946 | user_id  | duplicate_key    | error      | 476                          |
+| users   |   947 | user_id  | duplicate_key    | error      | 118                          |
+| users   |   950 | age      | missing_value    | error      | <NA>                         |
+| users   |   952 | age      | missing_value    | error      | <NA>                         |
+| users   |   948 | age      | out_of_range     | error      | -3                           |
+| users   |   949 | age      | out_of_range     | error      | -3                           |
+| users   |   951 | age      | out_of_range     | error      | 200                          |
+| users   |   953 | gender   | invalid_category | error      | X                            |
+| users   |   954 | gender   | invalid_category | error      | Q                            |
+| users   |   955 | gender   | invalid_category | error      | X                            |
+| users   |   956 | gender   | invalid_category | error      | Q                            |
+| users   |   957 | gender   | invalid_category | error      | Q                            |
+| users   |   943 | user_id  | duplicate_row    | error      | exact copy of an earlier row |
+| users   |   944 | user_id  | duplicate_row    | error      | exact copy of an earlier row |
+| users   |   945 | user_id  | duplicate_row    | error      | exact copy of an earlier row |
+| users   |   946 | user_id  | duplicate_row    | error      | exact copy of an earlier row |
+| users   |   947 | user_id  | duplicate_row    | error      | exact copy of an earlier row |
+| items   |  1682 | item_id  | duplicate_key    | error      | 623                          |
+| items   |  1683 | item_id  | duplicate_key    | error      | 309                          |
+| items   |  1684 | item_id  | duplicate_key    | error      | 154                          |

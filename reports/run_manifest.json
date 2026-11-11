@@ -1,61 +1,64 @@
 {
   "flow": "recommendation-pipeline",
-  "finished_at": "2026-11-04T06:12:15+00:00",
+  "finished_at": "2026-11-11T04:33:13+00:00",
   "config": "recommendation-pipeline",
   "dataset": "movielens-100k",
   "stages": [
     {
       "stage": "ingestion",
-      "started_at": "2026-11-04T06:12:04+00:00",
-      "finished_at": "2026-11-04T06:12:05+00:00",
-      "seconds": 0.14,
+      "started_at": "2026-11-11T04:32:54+00:00",
+      "finished_at": "2026-11-11T04:32:54+00:00",
+      "seconds": 0.15,
       "outputs": {
-        "users": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/users.csv",
-        "items": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/items.csv",
-        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/interactions.csv",
-        "manifest": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/raw/ingestion_manifest.json"
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/users.csv",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/items.csv",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/interactions.csv",
+        "manifest": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/ingestion_manifest.json"
       },
       "metrics": {
-        "users": 943,
-        "items": 1682,
-        "interactions": 100000
+        "users": 958,
+        "items": 1697,
+        "interactions": 100360
       }
     },
     {
       "stage": "validation",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:05+00:00",
-      "seconds": 0.35,
+      "started_at": "2026-11-11T04:32:54+00:00",
+      "finished_at": "2026-11-11T04:32:55+00:00",
+      "seconds": 0.31,
       "outputs": {
-        "issues": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/errors/validation_issues.csv",
-        "users": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/users_validated.parquet",
-        "items": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/items_validated.parquet",
-        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/interactions_validated.parquet",
-        "report_json": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.json",
-        "report_md": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.md"
+        "users_errors": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/users_errors.csv",
+        "items_errors": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/items_errors.csv",
+        "interactions_errors": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/interactions_errors.csv",
+        "issues": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/validation_issues.csv",
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/users_validated.parquet",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/items_validated.parquet",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/interactions_validated.parquet",
+        "report_json": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/validation_report.json",
+        "report_md": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/validation_report.md"
       },
       "metrics": {
         "users_rows_out": 943,
         "items_rows_out": 1682,
         "interactions_rows_out": 100000,
         "checks_run": 22,
-        "checks_failed": 0,
+        "checks_failed": 17,
         "checks_warned": 2,
-        "error_rows": 0
+        "error_rows": 390
       }
     },
     {
       "stage": "preparation",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:05+00:00",
-      "seconds": 0.12,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:32:55+00:00",
+      "seconds": 0.11,
       "outputs": {
-        "users": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/users.parquet",
-        "items": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/items.parquet",
-        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/interactions.parquet",
-        "train": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/train.parquet",
-        "test": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/test.parquet",
-        "split_manifest": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/split_manifest.json"
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/users.parquet",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/items.parquet",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/interactions.parquet",
+        "train": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/train.parquet",
+        "test": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/test.parquet",
+        "split_metadata": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/split_metadata.json"
       },
       "metrics": {
         "users": 943,
@@ -67,15 +70,15 @@
     },
     {
       "stage": "transformation",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:05+00:00",
-      "seconds": 0.2,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:32:55+00:00",
+      "seconds": 0.19,
       "outputs": {
-        "user_activity_summary": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/user_activity_summary.parquet",
-        "item_popularity": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/item_popularity.parquet",
-        "item_genres": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/item_genres.parquet",
-        "user_item_matrix": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/user_item_matrix.npz",
-        "matrix_index": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/processed/matrix_index.json"
+        "user_activity_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/user_activity_summary.parquet",
+        "item_popularity": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/item_popularity.parquet",
+        "item_genres": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/item_genres.parquet",
+        "user_item_matrix": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/user_item_matrix.npz",
+        "matrix_index": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/matrix_index.json"
       },
       "metrics": {
         "users": 943,
@@ -86,14 +89,15 @@
     },
     {
       "stage": "features",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:05+00:00",
-      "seconds": 0.23,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:32:55+00:00",
+      "seconds": 0.21,
       "outputs": {
-        "user_features": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/user_features.parquet",
-        "item_features": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/item_features.parquet",
-        "interaction_features": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/interaction_features.parquet",
-        "catalog": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/feature_catalog.md"
+        "user_features": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/user_features.parquet",
+        "item_features": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/item_features.parquet",
+        "interaction_features": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/interaction_features.parquet",
+        "metadata": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/feature_metadata.json",
+        "catalog": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/feature_catalog.md"
       },
       "metrics": {
         "user_features": 30,
@@ -106,76 +110,102 @@
     },
     {
       "stage": "train:popularity",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:07+00:00",
-      "seconds": 1.07,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:32:59+00:00",
+      "seconds": 4.38,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/popularity.pkl",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
-        "mlflow_run_id": "cbbf35d95d354771a355a0754213f4d5"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/popularity/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/popularity/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
+        "mlflow_run_id": "18ba2905c9a34d8891428a3faebe2d0f"
       },
       "metrics": {
         "items_scored": 1611,
         "global_mean_rating": 3.5806,
-        "fit_seconds": 1.07
+        "fit_seconds": 4.38
       }
     },
     {
       "stage": "train:implicit_als",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:13+00:00",
-      "seconds": 7.9,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:33:06+00:00",
+      "seconds": 10.7,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/implicit_als.pkl",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
-        "mlflow_run_id": "267930bb38c64e42a8ec860a90945d94"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/implicit_als/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/implicit_als/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
+        "mlflow_run_id": "b6eafe0c79534237a5685493fa673151"
       },
       "metrics": {
         "interactions_fit": 79619,
-        "fit_seconds": 7.9
+        "fit_seconds": 10.7
       }
     },
     {
       "stage": "train:als_matrix_factorization",
-      "started_at": "2026-11-04T06:12:05+00:00",
-      "finished_at": "2026-11-04T06:12:09+00:00",
-      "seconds": 3.02,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:33:01+00:00",
+      "seconds": 5.74,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/als_matrix_factorization.pkl",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
-        "mlflow_run_id": "a623d3e32566431aab235e04af8ab12a"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/als_matrix_factorization/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/als_matrix_factorization/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
+        "mlflow_run_id": "7bb3abbf95064c11b54cd23eddd8e613"
       },
       "metrics": {
         "train_rmse": 0.6768,
         "global_mean_rating": 3.5806,
-        "fit_seconds": 3.02
+        "fit_seconds": 5.74
       }
     },
     {
       "stage": "train:content_based_genres",
-      "started_at": "2026-11-04T06:12:07+00:00",
-      "finished_at": "2026-11-04T06:12:07+00:00",
-      "seconds": 0.2,
+      "started_at": "2026-11-11T04:32:55+00:00",
+      "finished_at": "2026-11-11T04:33:00+00:00",
+      "seconds": 4.5,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/content_based_genres.pkl",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/models/registry.json",
-        "mlflow_run_id": "5fba1d9b352140d9b07183a80667caab"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/content_based_genres/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/content_based_genres/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
+        "mlflow_run_id": "f5d634c763ca499ea4a293279eaa709f"
       },
       "metrics": {
         "users_with_profile": 942,
         "n_genres": 19,
-        "fit_seconds": 0.2
+        "fit_seconds": 4.5
+      }
+    },
+    {
+      "stage": "train:hybrid",
+      "started_at": "2026-11-11T04:33:06+00:00",
+      "finished_at": "2026-11-11T04:33:11+00:00",
+      "seconds": 5.17,
+      "outputs": {
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/hybrid/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/hybrid/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
+        "mlflow_run_id": "8e79132841b84b1eb2d29ace09fefb26"
+      },
+      "metrics": {
+        "interactions_fit": 79619,
+        "users_with_profile": 942,
+        "fit_seconds": 5.17
       }
     },
     {
       "stage": "evaluation",
-      "started_at": "2026-11-04T06:12:13+00:00",
-      "finished_at": "2026-11-04T06:12:15+00:00",
-      "seconds": 1.37,
+      "started_at": "2026-11-11T04:33:11+00:00",
+      "finished_at": "2026-11-11T04:33:13+00:00",
+      "seconds": 1.67,
       "outputs": {
-        "csv": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/model_evaluation.csv",
-        "markdown": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/model_evaluation.md",
-        "figure": "/home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/figures/metrics_comparison.png"
+        "csv": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/model_evaluation.csv",
+        "markdown": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/model_evaluation.md",
+        "figure": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/figures/metrics_comparison.png"
       },
       "metrics": {
         "popularity": {
@@ -219,6 +249,15 @@
           "users_with_empty_list": 0,
           "rmse": 1.1246,
           "mae": 0.8933
+        },
+        "hybrid": {
+          "precision_at_10": 0.1161,
+          "recall_at_10": 0.1411,
+          "ndcg_at_10": 0.1544,
+          "coverage": 0.2438,
+          "diversity": 0.5087,
+          "users_evaluated": 908,
+          "users_with_empty_list": 0
         }
       }
     }

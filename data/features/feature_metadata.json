@@ -1,0 +1,49 @@
+{
+  "as_of": "1998-04-22T23:10:38+00:00",
+  "reference_ts": 893286638,
+  "like_threshold": 4.0,
+  "global_mean_rating": 3.5806026199776437,
+  "user_defaults": {
+    "user_n_interactions": 0,
+    "user_n_liked": 0,
+    "user_like_rate": 0.0,
+    "user_mean_rating": 3.5806026199776437,
+    "user_rating_std": 0.0,
+    "user_active_span_days": 0.0,
+    "user_preferred_genre": "none",
+    "user_pref_unknown": 0.0,
+    "user_pref_action": 0.0,
+    "user_pref_adventure": 0.0,
+    "user_pref_animation": 0.0,
+    "user_pref_children_s": 0.0,
+    "user_pref_comedy": 0.0,
+    "user_pref_crime": 0.0,
+    "user_pref_documentary": 0.0,
+    "user_pref_drama": 0.0,
+    "user_pref_fantasy": 0.0,
+    "user_pref_film_noir": 0.0,
+    "user_pref_horror": 0.0,
+    "user_pref_musical": 0.0,
+    "user_pref_mystery": 0.0,
+    "user_pref_romance": 0.0,
+    "user_pref_sci_fi": 0.0,
+    "user_pref_thriller": 0.0,
+    "user_pref_war": 0.0,
+    "user_pref_western": 0.0
+  },
+  "item_defaults": {
+    "item_n_ratings": 0,
+    "item_mean_rating": 3.5806026199776437,
+    "item_like_rate": 0.0,
+    "item_popularity_score": 0.0
+  },
+  "feature_version": "09dbf74de6",
+  "n_user_features": 30,
+  "n_item_features": 29,
+  "n_interaction_features": 4,
+  "rows": {
+    "users": 943,
+    "items": 1682,
+    "interactions": 79619
+  }
+}

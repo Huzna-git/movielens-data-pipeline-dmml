@@ -1,0 +1,16 @@
+source_row,reasons,item_id,title,release_date,imdb_url,genres
+1682,duplicate_key;duplicate_row,623,Angels in the Outfield (1994),01-Jan-1994,http://us.imdb.com/M/title-exact?Angels%20in%20the%20Outfield%20(1994),Children's|Comedy
+1683,duplicate_key;duplicate_row,309,Deceiver (1997),01-Jan-1997,http://us.imdb.com/M/title-exact?Liar+(1997),Crime
+1684,duplicate_key;duplicate_row,154,Monty Python's Life of Brian (1979),01-Jan-1979,http://us.imdb.com/M/title-exact?Life%20of%20Brian%20(1979),Comedy
+1685,duplicate_key;duplicate_row,1295,Kicked in the Head (1997),01-Jan-1997,http://us.imdb.com/M/title-exact?Kicked+in+the+Head+(1997),Comedy|Drama
+1686,duplicate_key;duplicate_row,634,Microcosmos: Le peuple de l'herbe (1996),11-Oct-1996,http://us.imdb.com/M/title-exact?Microcosmos%3A%20Le%20peuple%20de%20l%27herbe%20%281996%29,Documentary
+1687,missing_value,600000,,01-Jan-1993,http://us.imdb.com/M/title-exact?Some%20Folks%20Call%20It%20a%20Sling%20Blade%20(1993),Drama|Thriller
+1688,missing_value,600001,,01-Jan-1971,http://us.imdb.com/M/title-exact?Harold%20and%20Maude%20(1971),Comedy
+1689,missing_value,600002,,01-Jan-1993,"http://us.imdb.com/M/title-exact?Saint%20of%20Fort%20Washington,%20The%20(1993)",Drama
+1690,missing_value,600003,,25-Dec-1997,http://us.imdb.com/M/title-exact?imdb-title-119314,Drama
+1691,missing_value,600004,,01-Jan-1995,http://us.imdb.com/M/title-exact?Living%20in%20Oblivion%20(1995),Comedy
+1692,unparseable_date,610000,Widows' Peak (1994) [bad date],31-Feb-1995,http://us.imdb.com/M/title-exact?Widows'%20Peak%20(1994),Drama
+1693,unparseable_date,610001,Dangerous Beauty (1998) [bad date],31-Feb-1995,http://us.imdb.com/M/title-exact?imdb-title-118892,Drama
+1694,unparseable_date,610002,Great Expectations (1998) [bad date],31-Feb-1995,http://us.imdb.com/M/title-exact?imdb-title-119223,Drama|Romance
+1695,unparseable_date,610003,Rebel Without a Cause (1955) [bad date],31-Feb-1995,http://us.imdb.com/M/title-exact?Rebel%20Without%20a%20Cause%20(1955),Drama
+1696,unparseable_date,610004,Passion Fish (1992) [bad date],31-Feb-1995,http://us.imdb.com/M/title-exact?Passion%20Fish%20(1992),Drama

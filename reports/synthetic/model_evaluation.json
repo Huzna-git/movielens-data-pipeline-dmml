@@ -47,6 +47,16 @@
       "users_with_empty_list": 3,
       "rmse": 0.8351,
       "mae": 0.6691
+    },
+    {
+      "model": "hybrid",
+      "precision_at_10": 0.0588,
+      "recall_at_10": 0.147,
+      "ndcg_at_10": 0.1177,
+      "coverage": 0.2775,
+      "diversity": 0.8444,
+      "users_evaluated": 434,
+      "users_with_empty_list": 0
     }
   ]
 }

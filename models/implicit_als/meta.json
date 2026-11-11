@@ -1,0 +1,23 @@
+{
+  "name": "implicit_als",
+  "class": "ImplicitALS",
+  "params": {
+    "n_factors": 20,
+    "n_epochs": 10,
+    "regularization": 0.1,
+    "alpha": 5.0,
+    "seed": 42,
+    "solver": "implicit ALS (confidence-weighted, YtY trick)"
+  },
+  "train_metrics": {
+    "interactions_fit": 79619,
+    "fit_seconds": 10.7
+  },
+  "train_seconds": 10.7,
+  "tuned_on_validation_split": true,
+  "mlflow_run_id": "b6eafe0c79534237a5685493fa673151",
+  "feature_version": "09dbf74de6",
+  "dataset": "movielens-100k",
+  "train_rows": 79619,
+  "trained_at": "2026-11-11T04:33:06+00:00"
+}

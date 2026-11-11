@@ -8,9 +8,10 @@ Dataset: synthetic · split: per_user_time (test fraction 0.2) · a held-out rat
 | implicit_als             |            0.0366 |         0.0940 |       0.0677 |     0.4075 |      0.8832 | n/a      | n/a      |
 | als_matrix_factorization |            0.0283 |         0.0628 |       0.0468 |     0.5663 |      0.8219 |   0.9282 |   0.7388 |
 | content_based_genres     |            0.0171 |         0.0329 |       0.0244 |     0.9525 |      0.3950 |   0.8351 |   0.6691 |
+| hybrid                   |            0.0588 |         0.1470 |       0.1177 |     0.2775 |      0.8444 | n/a      | n/a      |
 
 Users evaluated: 434 (test users with at least one relevant held-out item).
 
-**Best ranking model by NDCG@10: `popularity`.**
+**Best ranking model by NDCG@10: `hybrid`.**
 
 Precision/Recall/NDCG@K are averaged over users. Coverage = share of the catalogue recommended to at least one user. Diversity = 1 - mean pairwise cosine similarity of genre vectors within a user's list, averaged over users. RMSE/MAE are over all held-out ratings for the models that predict explicit ratings.

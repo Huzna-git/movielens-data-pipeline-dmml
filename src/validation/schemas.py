@@ -14,7 +14,8 @@ def users_schema(cfg: dict) -> pa.DataFrameSchema:
     v = cfg["validation"]
     return pa.DataFrameSchema(
         {
-            "user_id": pa.Column(pd.Int64Dtype(), pa.Check.ge(1), nullable=False, unique=True),
+            "user_id": pa.Column(pd.Int64Dtype(), pa.Check.ge(1), nullable=False, unique=True,
+                         report_duplicates="exclude_first"),   # the first copy of a key is the record; later copies are the errors
             "age": pa.Column(pd.Int64Dtype(), pa.Check.in_range(v["user_age_min"], v["user_age_max"]), nullable=False),
             "gender": pa.Column(str, pa.Check.isin(["M", "F", "m", "f"]), nullable=False),
             "occupation": pa.Column(str, pa.Check.str_length(min_value=1), nullable=False),
@@ -27,7 +28,8 @@ def users_schema(cfg: dict) -> pa.DataFrameSchema:
 def items_schema(cfg: dict) -> pa.DataFrameSchema:
     return pa.DataFrameSchema(
         {
-            "item_id": pa.Column(pd.Int64Dtype(), pa.Check.ge(1), nullable=False, unique=True),
+            "item_id": pa.Column(pd.Int64Dtype(), pa.Check.ge(1), nullable=False, unique=True,
+                         report_duplicates="exclude_first"),   # the first copy of a key is the record; later copies are the errors
             "title": pa.Column(str, pa.Check.str_length(min_value=1), nullable=False),
             "release_date": pa.Column(str, nullable=True),
             "imdb_url": pa.Column(str, nullable=True),

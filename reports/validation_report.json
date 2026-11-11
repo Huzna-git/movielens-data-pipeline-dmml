@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-04T06:12:05+00:00",
+  "generated_at": "2026-11-11T04:32:55+00:00",
   "tables": {
     "users": {
-      "rows_in": 943,
-      "error_rows": 0,
+      "rows_in": 958,
+      "error_rows": 15,
       "warning_rows": 0,
       "rows_out": 943
     },
     "items": {
-      "rows_in": 1682,
-      "error_rows": 0,
-      "warning_rows": 37,
+      "rows_in": 1697,
+      "error_rows": 15,
+      "warning_rows": 41,
       "rows_out": 1682
     },
     "interactions": {
-      "rows_in": 100000,
-      "error_rows": 0,
+      "rows_in": 100360,
+      "error_rows": 360,
       "warning_rows": 0,
       "rows_out": 100000
     }
@@ -26,24 +26,24 @@
       "check": "invalid_type",
       "columns": "user_id,age,gender,occupation,zip_code",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 2,
+      "status": "FAIL"
     },
     {
       "table": "users",
       "check": "missing_value",
       "columns": "non-nullable columns",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 2,
+      "status": "FAIL"
     },
     {
       "table": "users",
       "check": "duplicate_row",
       "columns": "all",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "users",
@@ -66,16 +66,16 @@
       "check": "missing_value",
       "columns": "non-nullable columns",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "items",
       "check": "duplicate_row",
       "columns": "all",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "items",
@@ -90,72 +90,72 @@
       "check": "invalid_type",
       "columns": "user_id,item_id,rating,timestamp",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 66,
+      "status": "FAIL"
     },
     {
       "table": "interactions",
       "check": "missing_value",
       "columns": "non-nullable columns",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 160,
+      "status": "FAIL"
     },
     {
       "table": "interactions",
       "check": "duplicate_row",
       "columns": "all",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 40,
+      "status": "FAIL"
     },
     {
       "table": "interactions",
       "check": "conflicting_duplicate_key",
       "columns": "user_id,item_id",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 202,
+      "status": "FAIL"
     },
     {
       "table": "users",
       "check": "duplicate_key",
       "columns": "user_id",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "users",
       "check": "out_of_range",
       "columns": "age in [5, 110]",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 3,
+      "status": "FAIL"
     },
     {
       "table": "users",
       "check": "invalid_category",
       "columns": "gender in {M,F}",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "items",
       "check": "duplicate_key",
       "columns": "item_id",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "items",
       "check": "unparseable_date",
       "columns": "release_date (dd-Mon-yyyy)",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 5,
+      "status": "FAIL"
     },
     {
       "table": "items",
@@ -170,7 +170,7 @@
       "check": "duplicate_title",
       "columns": "title",
       "severity": "warning",
-      "failures": 36,
+      "failures": 45,
       "status": "WARN"
     },
     {
@@ -178,24 +178,24 @@
       "check": "out_of_range",
       "columns": "rating in [1.0, 5.0]; timestamp in [1990-01-01, 2030-01-01]",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 80,
+      "status": "FAIL"
     },
     {
       "table": "interactions",
       "check": "unknown_user",
       "columns": "user_id -> users.user_id",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 40,
+      "status": "FAIL"
     },
     {
       "table": "interactions",
       "check": "unknown_item",
       "columns": "item_id -> items.item_id",
       "severity": "error",
-      "failures": 0,
-      "status": "PASS"
+      "failures": 40,
+      "status": "FAIL"
     }
   ]
 }

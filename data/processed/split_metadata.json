@@ -1,0 +1,22 @@
+{
+  "strategy": "per_user_time",
+  "test_fraction": 0.2,
+  "min_user_interactions": 5,
+  "train_rows": 79619,
+  "test_rows": 20381,
+  "train_users": 943,
+  "test_users": 943,
+  "train_items": 1611,
+  "test_items": 1508,
+  "test_users_seen_in_train": 943,
+  "test_users_unseen_in_train": 0,
+  "test_rows_with_item_unseen_in_train": 88,
+  "train_time_range": [
+    "1997-09-20T03:05:10+00:00",
+    "1998-04-22T23:10:38+00:00"
+  ],
+  "test_time_range": [
+    "1997-09-20T20:18:15+00:00",
+    "1998-04-22T23:10:38+00:00"
+  ]
+}

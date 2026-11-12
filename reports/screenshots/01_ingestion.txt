@@ -1,10 +1,11 @@
-2026-11-04 09:11:27 | pipeline.ingestion | INFO    | source = movielens-100k
-2026-11-04 09:11:27 | pipeline.ingestion | INFO    | downloading https://files.grouplens.org/datasets/movielens/ml-100k.zip
-2026-11-04 09:11:30 | pipeline.ingestion | INFO    | downloaded ml-100k.zip (4.9 MB, sha256 50d2a982c669...)
-2026-11-04 09:11:30 | pipeline.ingestion | INFO    | wrote users             943 rows x 5 cols -> users.csv
-2026-11-04 09:11:30 | pipeline.ingestion | INFO    | wrote items            1682 rows x 5 cols -> items.csv
-2026-11-04 09:11:30 | pipeline.ingestion | INFO    | wrote interactions   100000 rows x 4 cols -> interactions.csv
-2026-11-04 09:11:30 | pipeline.ingestion | INFO    | ingestion complete: {'users': 943, 'items': 1682, 'interactions': 100000}
-{"stage": "ingestion", "seconds": 3.47, "metrics": {"users": 943, "items": 1682, "interactions": 100000}}
+2026-11-12 08:01:27 | pipeline.ingestion | INFO    | source = movielens-100k
+2026-11-12 08:01:27 | pipeline.ingestion | INFO    | downloading https://files.grouplens.org/datasets/movielens/ml-100k.zip
+2026-11-12 08:01:31 | pipeline.ingestion | INFO    | downloaded ml-100k.zip (4.9 MB, sha256 50d2a982c669...)
+2026-11-12 08:01:31 | pipeline.ingestion | INFO    | fault injection: 390 corrupt rows appended {'interactions.missing_rating': 40, 'interactions.rating_out_of_range': 40, 'interactions.rating_wrong_type': 40, 'interactions.timestamp_out_of_range': 40, 'interactions.timestamp_wrong_type': 40, 'interactions.exact_duplicate': 40, 'interactions.unknown_user': 40, 'interactions.unknown_item': 40, 'interactions.missing_user_id': 40, 'users.exact_duplicate': 5, 'users.invalid_age': 5, 'users.invalid_gender': 5, 'items.exact_duplicate': 5, 'items.missing_title': 5, 'items.unparseable_date': 5}
+2026-11-12 08:01:31 | pipeline.ingestion | INFO    | wrote users             958 rows x 5 cols -> users.csv
+2026-11-12 08:01:31 | pipeline.ingestion | INFO    | wrote items            1697 rows x 5 cols -> items.csv
+2026-11-12 08:01:31 | pipeline.ingestion | INFO    | wrote interactions   100360 rows x 4 cols -> interactions.csv
+2026-11-12 08:01:31 | pipeline.ingestion | INFO    | ingestion complete: {'users': 958, 'items': 1697, 'interactions': 100360}
+{"stage": "ingestion", "seconds": 3.7, "metrics": {"users": 958, "items": 1697, "interactions": 100360}}
 
-[exit code 0, 4.9s]
+[exit code 0, 5.3s]

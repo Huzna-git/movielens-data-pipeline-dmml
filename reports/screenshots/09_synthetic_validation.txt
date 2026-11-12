@@ -1,76 +1,83 @@
-2026-11-04 09:11:58 | pipeline.ingestion | INFO    | source = synthetic
-2026-11-04 09:11:58 | pipeline.ingestion | INFO    | synthetic corruption injected: {'missing': 195, 'rating_range': 186, 'rating_type': 198, 'timestamp': 207, 'unknown_item': 188, 'unknown_user': 193, 'duplicate_row': 233}
-2026-11-04 09:11:58 | pipeline.ingestion | INFO    | wrote users             500 rows x 5 cols -> users.csv
-2026-11-04 09:11:58 | pipeline.ingestion | INFO    | wrote items             800 rows x 5 cols -> items.csv
-2026-11-04 09:11:58 | pipeline.ingestion | INFO    | wrote interactions    39161 rows x 4 cols -> interactions.csv
-2026-11-04 09:11:58 | pipeline.ingestion | INFO    | ingestion complete: {'users': 500, 'items': 800, 'interactions': 39161}
+2026-11-12 08:09:51 | pipeline.ingestion | INFO    | source = synthetic
+2026-11-12 08:09:51 | pipeline.ingestion | INFO    | synthetic corruption injected: {'missing': 195, 'rating_range': 186, 'rating_type': 198, 'timestamp': 207, 'unknown_item': 188, 'unknown_user': 193, 'duplicate_row': 233}
+2026-11-12 08:09:51 | pipeline.ingestion | INFO    | wrote users             500 rows x 5 cols -> users.csv
+2026-11-12 08:09:51 | pipeline.ingestion | INFO    | wrote items             800 rows x 5 cols -> items.csv
+2026-11-12 08:09:51 | pipeline.ingestion | INFO    | wrote interactions    39161 rows x 4 cols -> interactions.csv
+2026-11-12 08:09:51 | pipeline.ingestion | INFO    | ingestion complete: {'users': 500, 'items': 800, 'interactions': 39161}
 {"stage": "ingestion", "seconds": 0.1, "metrics": {"users": 500, "items": 800, "interactions": 39161}}
-2026-11-04 09:11:58 | pipeline.validation | INFO    | loaded raw tables: {'users': 500, 'items': 800, 'interactions': 39161}
-2026-11-04 09:11:59 | pipeline.validation | INFO    | users         rows in     500 | errors     0 | warnings     0 | rows out     500
-2026-11-04 09:11:59 | pipeline.validation | INFO    | items         rows in     800 | errors     0 | warnings     0 | rows out     800
-2026-11-04 09:11:59 | pipeline.validation | INFO    | interactions  rows in   39161 | errors  1400 | warnings     0 | rows out   37761
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  invalid_type                  199 rows
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  missing_value                 395 rows
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  duplicate_row                 233 rows
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  conflicting_duplicate_key     103 rows
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  out_of_range                  394 rows
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  unknown_user                  194 rows
-2026-11-04 09:11:59 | pipeline.validation | WARNING | FAIL  interactions  unknown_item                  189 rows
-2026-11-04 09:11:59 | pipeline.validation | INFO    | validation complete: 22 checks, 7 FAIL, 0 WARN, 1400 error rows -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/synthetic/validation_report.md
+2026-11-12 08:09:51 | pipeline.validation | INFO    | loaded raw tables: {'users': 500, 'items': 800, 'interactions': 39161}
+2026-11-12 08:09:51 | pipeline.validation | INFO    | users         rows in     500 | errors     0 | warnings     0 | rows out     500
+2026-11-12 08:09:51 | pipeline.validation | INFO    | items         rows in     800 | errors     0 | warnings     0 | rows out     800
+2026-11-12 08:09:51 | pipeline.validation | INFO    | interactions  rows in   39161 | errors  1400 | warnings     0 | rows out   37761
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  invalid_type                  199 rows
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  missing_value                 395 rows
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  duplicate_row                 233 rows
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  conflicting_duplicate_key     103 rows
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  out_of_range                  394 rows
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  unknown_user                  194 rows
+2026-11-12 08:09:51 | pipeline.validation | WARNING | FAIL  interactions  unknown_item                  189 rows
+2026-11-12 08:09:51 | pipeline.validation | INFO    | validation complete: 22 checks, 7 FAIL, 0 WARN, 1400 error rows -> ./reports/synthetic/validation_report.md
 {"stage": "validation", "seconds": 0.24, "metrics": {"users_rows_out": 500, "items_rows_out": 800, "interactions_rows_out": 37761, "checks_run": 22, "checks_failed": 7, "checks_warned": 0, "error_rows": 1400}}
-2026-11-04 09:11:59 | pipeline.preparation | INFO    | cleaned: users 500 | items 800 | interactions 37761
-2026-11-04 09:11:59 | pipeline.preparation | INFO    | items with no release date: 0 (kept, release_year flagged missing)
-2026-11-04 09:11:59 | pipeline.preparation | INFO    | interaction window: 2023-01-01 .. 2023-12-31
-2026-11-04 09:11:59 | pipeline.preparation | INFO    | split per_user_time: train 29998 rows / test 7763 rows (20.6%); 7 test rows name an item unseen in train
-2026-11-04 09:11:59 | pipeline.preparation | INFO    | preparation complete
+2026-11-12 08:09:51 | pipeline.preparation | INFO    | cleaned: users 500 | items 800 | interactions 37761
+2026-11-12 08:09:51 | pipeline.preparation | INFO    | items with no release date: 0 (kept, release_year flagged missing)
+2026-11-12 08:09:51 | pipeline.preparation | INFO    | interaction window: 2023-01-01 .. 2023-12-31
+2026-11-12 08:09:51 | pipeline.preparation | INFO    | split per_user_time: train 29998 rows / test 7763 rows (20.6%); 7 test rows name an item unseen in train
+2026-11-12 08:09:51 | pipeline.preparation | INFO    | preparation complete
 {"stage": "preparation", "seconds": 0.06, "metrics": {"users": 500, "items": 800, "interactions": 37761, "train_rows": 29998, "test_rows": 7763}}
-2026-11-04 09:11:59 | pipeline.transformation | INFO    | user_activity_summary: 500 users; median interactions/user = 42; mean rating = 2.96
-2026-11-04 09:11:59 | pipeline.transformation | INFO    | item_popularity: 800 items; 9 never rated in train; top-5: Synthetic Movie 452 (1989) (355) | Synthetic Movie 560 (1988) (273) | Synthetic Movie 782 (2010) (276) | Synthetic Movie 172 (1985) (266) | Synthetic Movie 549 (1980) (287)
-2026-11-04 09:11:59 | pipeline.transformation | INFO    | item_genres: 800 items x 19 genres
-2026-11-04 09:11:59 | pipeline.transformation | INFO    | user_item_matrix: shape (500, 800), 29998 non-zeros, density 0.0750 (sparsity 92.50%)
-2026-11-04 09:11:59 | pipeline.transformation | INFO    | transformation complete
-{"stage": "transformation", "seconds": 0.1, "metrics": {"users": 500, "items": 800, "nnz": 29998, "density": 0.075}}
-2026-11-04 09:11:59 | pipeline.features | INFO    | reference time = 2023-12-28 07:35:44+00:00 (latest train timestamp); like threshold = 4.0
-2026-11-04 09:11:59 | pipeline.features | INFO    | user features:          500 rows x 30 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/synthetic/features/user_features.parquet
-2026-11-04 09:11:59 | pipeline.features | INFO    | item features:          800 rows x 29 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/synthetic/features/item_features.parquet
-2026-11-04 09:11:59 | pipeline.features | INFO    | interaction features: 29998 rows x  4 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/synthetic/features/interaction_features.parquet
-2026-11-04 09:11:59 | pipeline.features | INFO    | feature catalog written: /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/synthetic/feature_catalog.md (63 features)
-2026-11-04 09:11:59 | pipeline.features | INFO    | sample user features:
+2026-11-12 08:09:51 | pipeline.transformation | INFO    | user_activity_summary: 500 users; median interactions/user = 42; mean rating = 2.96
+2026-11-12 08:09:51 | pipeline.transformation | INFO    | item_popularity: 800 items; 9 never rated in train; top-5: Synthetic Movie 452 (1989) (355) | Synthetic Movie 560 (1988) (273) | Synthetic Movie 782 (2010) (276) | Synthetic Movie 172 (1985) (266) | Synthetic Movie 549 (1980) (287)
+2026-11-12 08:09:51 | pipeline.transformation | INFO    | item_genres: 800 items x 19 genres
+2026-11-12 08:09:51 | pipeline.transformation | INFO    | user_item_matrix: shape (500, 800), 29998 non-zeros, density 0.0750 (sparsity 92.50%)
+2026-11-12 08:09:51 | pipeline.transformation | INFO    | transformation complete
+{"stage": "transformation", "seconds": 0.11, "metrics": {"users": 500, "items": 800, "nnz": 29998, "density": 0.075}}
+2026-11-12 08:09:51 | pipeline.features | INFO    | reference time = 2023-12-28 07:35:44+00:00 (latest train timestamp); like threshold = 4.0
+2026-11-12 08:09:51 | pipeline.features | INFO    | user features:          500 rows x 30 features -> ./data/synthetic/features/user_features.parquet
+2026-11-12 08:09:51 | pipeline.features | INFO    | item features:          800 rows x 29 features -> ./data/synthetic/features/item_features.parquet
+2026-11-12 08:09:51 | pipeline.features | INFO    | interaction features: 29998 rows x  4 features -> ./data/synthetic/features/interaction_features.parquet
+2026-11-12 08:09:51 | pipeline.features | INFO    | feature catalog written: ./reports/synthetic/feature_catalog.md (63 features)
+2026-11-12 08:09:51 | pipeline.features | INFO    | sample user features:
  user_id  user_n_interactions  user_mean_rating  user_days_since_last_interaction user_preferred_genre
        1                   20          2.950000                         73.889653            film_noir
        2                   27          2.814815                         83.739711            animation
        3                   87          2.965517                         59.748924               comedy
-2026-11-04 09:11:59 | pipeline.features | INFO    | feature engineering complete
-{"stage": "features", "seconds": 0.13, "metrics": {"user_features": 30, "item_features": 29, "interaction_features": 4, "users": 500, "items": 800, "pairs": 29998}}
-2026-11-04 09:11:59 | pipeline.training | INFO    | [popularity] training on 29998 interactions, 500 users, 800 items
-2026-11-04 09:12:00 | pipeline.training | INFO    | [popularity] trained in 0.6s | {'items_scored': 791, 'global_mean_rating': 2.9521, 'fit_seconds': 0.6} | mlflow run 3795e28f
-2026-11-04 09:12:00 | pipeline.training | INFO    | [implicit_als] training on 29998 interactions, 500 users, 800 items
-2026-11-04 09:12:00 | pipeline.training | INFO    | [implicit_als] trained in 0.3s | {'interactions_fit': 29998, 'fit_seconds': 0.28} | mlflow run 94bec86a
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] training on 29998 interactions, 500 users, 800 items
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  1/10  train RMSE 0.8631
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  2/10  train RMSE 0.7680
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  3/10  train RMSE 0.6703
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  4/10  train RMSE 0.6358
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  5/10  train RMSE 0.6207
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  6/10  train RMSE 0.6122
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  7/10  train RMSE 0.6068
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  8/10  train RMSE 0.6030
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch  9/10  train RMSE 0.6001
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] epoch 10/10  train RMSE 0.5981
-2026-11-04 09:12:00 | pipeline.training | INFO    | [als_matrix_factorization] trained in 0.5s | {'train_rmse': 0.5981, 'global_mean_rating': 2.9521, 'fit_seconds': 0.52} | mlflow run 26e4ad22
-2026-11-04 09:12:01 | pipeline.training | INFO    | [content_based_genres] training on 29998 interactions, 500 users, 800 items
-2026-11-04 09:12:01 | pipeline.training | INFO    | [content_based_genres] trained in 0.1s | {'users_with_profile': 490, 'n_genres': 19, 'fit_seconds': 0.11} | mlflow run 0667b564
-{"stage": "train:popularity", "seconds": 0.6, "metrics": {"items_scored": 791, "global_mean_rating": 2.9521, "fit_seconds": 0.6}}
-{"stage": "train:implicit_als", "seconds": 0.28, "metrics": {"interactions_fit": 29998, "fit_seconds": 0.28}}
-{"stage": "train:als_matrix_factorization", "seconds": 0.52, "metrics": {"train_rmse": 0.5981, "global_mean_rating": 2.9521, "fit_seconds": 0.52}}
-{"stage": "train:content_based_genres", "seconds": 0.11, "metrics": {"users_with_profile": 490, "n_genres": 19, "fit_seconds": 0.11}}
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | K=10, relevance threshold=4.0, test rows=7763, test users=498, catalogue=800 items
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | popularity                 P@10 0.0509 | R@10 0.1373 | NDCG@10 0.1027 | coverage 0.1200 | diversity 0.9002 | RMSE 0.9375 | MAE 0.7122
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | implicit_als               P@10 0.0366 | R@10 0.0940 | NDCG@10 0.0677 | coverage 0.4075 | diversity 0.8832 | RMSE n/a | MAE n/a
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | als_matrix_factorization   P@10 0.0283 | R@10 0.0628 | NDCG@10 0.0468 | coverage 0.5663 | diversity 0.8219 | RMSE 0.9282 | MAE 0.7388
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | content_based_genres       P@10 0.0171 | R@10 0.0329 | NDCG@10 0.0244 | coverage 0.9525 | diversity 0.3950 | RMSE 0.8351 | MAE 0.6691
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | best model by NDCG@10: popularity
-2026-11-04 09:12:01 | pipeline.evaluation | INFO    | evaluation complete -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/synthetic/model_evaluation.md
-{"stage": "evaluation", "seconds": 0.82, "metrics": {"popularity": {"precision_at_10": 0.0509, "recall_at_10": 0.1373, "ndcg_at_10": 0.1027, "coverage": 0.12, "diversity": 0.9002, "users_evaluated": 434, "users_with_empty_list": 0, "rmse": 0.9375, "mae": 0.7122}, "implicit_als": {"precision_at_10": 0.0366, "recall_at_10": 0.094, "ndcg_at_10": 0.0677, "coverage": 0.4075, "diversity": 0.8832, "users_evaluated": 434, "users_with_empty_list": 0}, "als_matrix_factorization": {"precision_at_10": 0.0283, "recall_at_10": 0.0628, "ndcg_at_10": 0.0468, "coverage": 0.5663, "diversity": 0.8219, "users_evaluated": 434, "users_with_empty_list": 0, "rmse": 0.9282, "mae": 0.7388}, "content_based_genres": {"precision_at_10": 0.0171, "recall_at_10": 0.0329, "ndcg_at_10": 0.0244, "coverage": 0.9525, "diversity": 0.395, "users_evaluated": 434, "users_with_empty_list": 3, "rmse": 0.8351, "mae": 0.6691}}}
+2026-11-12 08:09:51 | pipeline.features | INFO    | feature engineering complete
+{"stage": "features", "seconds": 0.15, "metrics": {"user_features": 30, "item_features": 29, "interaction_features": 4, "users": 500, "items": 800, "pairs": 29998}}
+2026-11-12 08:09:52 | pipeline.training | INFO    | [popularity] training on 29998 interactions, 500 users, 800 items
+2026-11-12 08:09:52 | pipeline.training | INFO    | [popularity] trained in 0.6s | {'items_scored': 791, 'global_mean_rating': 2.9521, 'fit_seconds': 0.63} | mlflow run ff02ce1b
+2026-11-12 08:09:52 | pipeline.training | INFO    | [implicit_als] training on 29998 interactions, 500 users, 800 items
+2026-11-12 08:09:52 | pipeline.training | INFO    | [implicit_als] trained in 0.3s | {'interactions_fit': 29998, 'fit_seconds': 0.3} | mlflow run b17429c9
+2026-11-12 08:09:52 | pipeline.training | INFO    | [als_matrix_factorization] training on 29998 interactions, 500 users, 800 items
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  1/10  train RMSE 0.8631
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  2/10  train RMSE 0.7680
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  3/10  train RMSE 0.6703
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  4/10  train RMSE 0.6358
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  5/10  train RMSE 0.6207
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  6/10  train RMSE 0.6122
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  7/10  train RMSE 0.6068
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  8/10  train RMSE 0.6030
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch  9/10  train RMSE 0.6001
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] epoch 10/10  train RMSE 0.5981
+2026-11-12 08:09:53 | pipeline.training | INFO    | [als_matrix_factorization] trained in 0.6s | {'train_rmse': 0.5981, 'global_mean_rating': 2.9521, 'fit_seconds': 0.58} | mlflow run 36cf76e4
+2026-11-12 08:09:53 | pipeline.training | INFO    | [content_based_genres] training on 29998 interactions, 500 users, 800 items
+2026-11-12 08:09:53 | pipeline.training | INFO    | [content_based_genres] trained in 0.1s | {'users_with_profile': 490, 'n_genres': 19, 'fit_seconds': 0.08} | mlflow run 744cc65d
+2026-11-12 08:09:53 | pipeline.training | INFO    | [hybrid] training on 29998 interactions, 500 users, 800 items
+2026-11-12 08:09:54 | pipeline.training | INFO    | [hybrid] tuning blend weights: fit part 25274 rows, validation 4724 rows, 382 users
+2026-11-12 08:09:54 | pipeline.training | INFO    | [hybrid] best weights {'w_cf': 1.0, 'w_genre': 0.5, 'w_popularity': 1.0} (val NDCG@10 0.0925)
+2026-11-12 08:09:55 | pipeline.training | INFO    | [hybrid] collaborative half: the trained implicit_als model
+2026-11-12 08:09:55 | pipeline.training | INFO    | [hybrid] trained in 1.4s | {'interactions_fit': 29998, 'users_with_profile': 490, 'fit_seconds': 1.36} | mlflow run eb103199
+{"stage": "train:popularity", "seconds": 0.63, "metrics": {"items_scored": 791, "global_mean_rating": 2.9521, "fit_seconds": 0.63}}
+{"stage": "train:implicit_als", "seconds": 0.3, "metrics": {"interactions_fit": 29998, "fit_seconds": 0.3}}
+{"stage": "train:als_matrix_factorization", "seconds": 0.58, "metrics": {"train_rmse": 0.5981, "global_mean_rating": 2.9521, "fit_seconds": 0.58}}
+{"stage": "train:content_based_genres", "seconds": 0.08, "metrics": {"users_with_profile": 490, "n_genres": 19, "fit_seconds": 0.08}}
+{"stage": "train:hybrid", "seconds": 1.36, "metrics": {"interactions_fit": 29998, "users_with_profile": 490, "fit_seconds": 1.36}}
+2026-11-12 08:09:55 | pipeline.evaluation | INFO    | K=10, relevance threshold=4.0, test rows=7763, test users=498, catalogue=800 items
+2026-11-12 08:09:55 | pipeline.evaluation | INFO    | popularity                 P@10 0.0509 | R@10 0.1373 | NDCG@10 0.1027 | coverage 0.1200 | diversity 0.9002 | RMSE 0.9375 | MAE 0.7122
+2026-11-12 08:09:55 | pipeline.evaluation | INFO    | implicit_als               P@10 0.0366 | R@10 0.0940 | NDCG@10 0.0677 | coverage 0.4075 | diversity 0.8832 | RMSE n/a | MAE n/a
+2026-11-12 08:09:55 | pipeline.evaluation | INFO    | als_matrix_factorization   P@10 0.0283 | R@10 0.0628 | NDCG@10 0.0468 | coverage 0.5663 | diversity 0.8219 | RMSE 0.9282 | MAE 0.7388
+2026-11-12 08:09:55 | pipeline.evaluation | INFO    | content_based_genres       P@10 0.0171 | R@10 0.0329 | NDCG@10 0.0244 | coverage 0.9525 | diversity 0.3950 | RMSE 0.8351 | MAE 0.6691
+2026-11-12 08:09:55 | pipeline.evaluation | INFO    | hybrid                     P@10 0.0588 | R@10 0.1470 | NDCG@10 0.1177 | coverage 0.2775 | diversity 0.8444 | RMSE n/a | MAE n/a
+2026-11-12 08:09:56 | pipeline.evaluation | INFO    | best model by NDCG@10: hybrid
+2026-11-12 08:09:56 | pipeline.evaluation | INFO    | evaluation complete -> ./reports/synthetic/model_evaluation.md
+{"stage": "evaluation", "seconds": 0.99, "metrics": {"popularity": {"precision_at_10": 0.0509, "recall_at_10": 0.1373, "ndcg_at_10": 0.1027, "coverage": 0.12, "diversity": 0.9002, "users_evaluated": 434, "users_with_empty_list": 0, "rmse": 0.9375, "mae": 0.7122}, "implicit_als": {"precision_at_10": 0.0366, "recall_at_10": 0.094, "ndcg_at_10": 0.0677, "coverage": 0.4075, "diversity": 0.8832, "users_evaluated": 434, "users_with_empty_list": 0}, "als_matrix_factorization": {"precision_at_10": 0.0283, "recall_at_10": 0.0628, "ndcg_at_10": 0.0468, "coverage": 0.5663, "diversity": 0.8219, "users_evaluated": 434, "users_with_empty_list": 0, "rmse": 0.9282, "mae": 0.7388}, "content_based_genres": {"precision_at_10": 0.0171, "recall_at_10": 0.0329, "ndcg_at_10": 0.0244, "coverage": 0.9525, "diversity": 0.395, "users_evaluated": 434, "users_with_empty_list": 3, "rmse": 0.8351, "mae": 0.6691}, "hybrid": {"precision_at_10": 0.0588, "recall_at_10": 0.147, "ndcg_at_10": 0.1177, "coverage": 0.2775, "diversity": 0.8444, "users_evaluated": 434, "users_with_empty_list": 0}}}
 
-[exit code 0, 4.7s]
+[exit code 0, 6.6s]

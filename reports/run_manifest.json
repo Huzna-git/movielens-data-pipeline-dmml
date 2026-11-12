@@ -1,19 +1,19 @@
 {
   "flow": "recommendation-pipeline",
-  "finished_at": "2026-11-11T04:33:13+00:00",
+  "finished_at": "2026-11-12T05:19:06+00:00",
   "config": "recommendation-pipeline",
   "dataset": "movielens-100k",
   "stages": [
     {
       "stage": "ingestion",
-      "started_at": "2026-11-11T04:32:54+00:00",
-      "finished_at": "2026-11-11T04:32:54+00:00",
+      "started_at": "2026-11-12T05:18:50+00:00",
+      "finished_at": "2026-11-12T05:18:51+00:00",
       "seconds": 0.15,
       "outputs": {
-        "users": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/users.csv",
-        "items": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/items.csv",
-        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/interactions.csv",
-        "manifest": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/raw/ingestion_manifest.json"
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/raw/users.csv",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/raw/items.csv",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/raw/interactions.csv",
+        "manifest": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/raw/ingestion_manifest.json"
       },
       "metrics": {
         "users": 958,
@@ -23,19 +23,19 @@
     },
     {
       "stage": "validation",
-      "started_at": "2026-11-11T04:32:54+00:00",
-      "finished_at": "2026-11-11T04:32:55+00:00",
-      "seconds": 0.31,
+      "started_at": "2026-11-12T05:18:51+00:00",
+      "finished_at": "2026-11-12T05:18:51+00:00",
+      "seconds": 0.33,
       "outputs": {
-        "users_errors": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/users_errors.csv",
-        "items_errors": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/items_errors.csv",
-        "interactions_errors": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/interactions_errors.csv",
-        "issues": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/errors/validation_issues.csv",
-        "users": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/users_validated.parquet",
-        "items": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/items_validated.parquet",
-        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/interactions_validated.parquet",
-        "report_json": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/validation_report.json",
-        "report_md": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/validation_report.md"
+        "users_errors": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/errors/users_errors.csv",
+        "items_errors": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/errors/items_errors.csv",
+        "interactions_errors": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/errors/interactions_errors.csv",
+        "issues": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/errors/validation_issues.csv",
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/users_validated.parquet",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/items_validated.parquet",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/interactions_validated.parquet",
+        "report_json": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/reports/validation_report.json",
+        "report_md": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/reports/validation_report.md"
       },
       "metrics": {
         "users_rows_out": 943,
@@ -49,16 +49,16 @@
     },
     {
       "stage": "preparation",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:32:55+00:00",
-      "seconds": 0.11,
+      "started_at": "2026-11-12T05:18:51+00:00",
+      "finished_at": "2026-11-12T05:18:51+00:00",
+      "seconds": 0.12,
       "outputs": {
-        "users": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/users.parquet",
-        "items": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/items.parquet",
-        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/interactions.parquet",
-        "train": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/train.parquet",
-        "test": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/test.parquet",
-        "split_metadata": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/split_metadata.json"
+        "users": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/users.parquet",
+        "items": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/items.parquet",
+        "interactions": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/interactions.parquet",
+        "train": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/train.parquet",
+        "test": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/test.parquet",
+        "split_metadata": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/split_metadata.json"
       },
       "metrics": {
         "users": 943,
@@ -70,15 +70,15 @@
     },
     {
       "stage": "transformation",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:32:55+00:00",
-      "seconds": 0.19,
+      "started_at": "2026-11-12T05:18:51+00:00",
+      "finished_at": "2026-11-12T05:18:51+00:00",
+      "seconds": 0.2,
       "outputs": {
-        "user_activity_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/user_activity_summary.parquet",
-        "item_popularity": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/item_popularity.parquet",
-        "item_genres": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/item_genres.parquet",
-        "user_item_matrix": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/user_item_matrix.npz",
-        "matrix_index": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/processed/matrix_index.json"
+        "user_activity_summary": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/user_activity_summary.parquet",
+        "item_popularity": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/item_popularity.parquet",
+        "item_genres": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/item_genres.parquet",
+        "user_item_matrix": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/user_item_matrix.npz",
+        "matrix_index": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/processed/matrix_index.json"
       },
       "metrics": {
         "users": 943,
@@ -89,15 +89,15 @@
     },
     {
       "stage": "features",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:32:55+00:00",
-      "seconds": 0.21,
+      "started_at": "2026-11-12T05:18:51+00:00",
+      "finished_at": "2026-11-12T05:18:52+00:00",
+      "seconds": 0.26,
       "outputs": {
-        "user_features": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/user_features.parquet",
-        "item_features": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/item_features.parquet",
-        "interaction_features": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/interaction_features.parquet",
-        "metadata": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/data/features/feature_metadata.json",
-        "catalog": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/feature_catalog.md"
+        "user_features": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/features/user_features.parquet",
+        "item_features": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/features/item_features.parquet",
+        "interaction_features": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/features/interaction_features.parquet",
+        "metadata": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/data/features/feature_metadata.json",
+        "catalog": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/reports/feature_catalog.md"
       },
       "metrics": {
         "user_features": 30,
@@ -110,102 +110,102 @@
     },
     {
       "stage": "train:popularity",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:32:59+00:00",
-      "seconds": 4.38,
+      "started_at": "2026-11-12T05:18:52+00:00",
+      "finished_at": "2026-11-12T05:18:52+00:00",
+      "seconds": 0.68,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/popularity/model.pkl",
-        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/popularity/meta.json",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
-        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
-        "mlflow_run_id": "18ba2905c9a34d8891428a3faebe2d0f"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/popularity/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/popularity/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/training_summary.json",
+        "mlflow_run_id": "6397cbcfba27409292234a560a416136"
       },
       "metrics": {
         "items_scored": 1611,
         "global_mean_rating": 3.5806,
-        "fit_seconds": 4.38
+        "fit_seconds": 0.68
       }
     },
     {
       "stage": "train:implicit_als",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:33:06+00:00",
-      "seconds": 10.7,
+      "started_at": "2026-11-12T05:18:52+00:00",
+      "finished_at": "2026-11-12T05:18:59+00:00",
+      "seconds": 7.36,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/implicit_als/model.pkl",
-        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/implicit_als/meta.json",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
-        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
-        "mlflow_run_id": "b6eafe0c79534237a5685493fa673151"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/implicit_als/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/implicit_als/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/training_summary.json",
+        "mlflow_run_id": "71326e03872e418e95720ec4e79f20b0"
       },
       "metrics": {
         "interactions_fit": 79619,
-        "fit_seconds": 10.7
+        "fit_seconds": 7.36
       }
     },
     {
       "stage": "train:als_matrix_factorization",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:33:01+00:00",
-      "seconds": 5.74,
+      "started_at": "2026-11-12T05:18:52+00:00",
+      "finished_at": "2026-11-12T05:18:54+00:00",
+      "seconds": 2.13,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/als_matrix_factorization/model.pkl",
-        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/als_matrix_factorization/meta.json",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
-        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
-        "mlflow_run_id": "7bb3abbf95064c11b54cd23eddd8e613"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/als_matrix_factorization/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/als_matrix_factorization/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/training_summary.json",
+        "mlflow_run_id": "b682aa1db08b40a8a4d865e6af45db0f"
       },
       "metrics": {
         "train_rmse": 0.6768,
         "global_mean_rating": 3.5806,
-        "fit_seconds": 5.74
+        "fit_seconds": 2.13
       }
     },
     {
       "stage": "train:content_based_genres",
-      "started_at": "2026-11-11T04:32:55+00:00",
-      "finished_at": "2026-11-11T04:33:00+00:00",
-      "seconds": 4.5,
+      "started_at": "2026-11-12T05:18:52+00:00",
+      "finished_at": "2026-11-12T05:18:52+00:00",
+      "seconds": 0.74,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/content_based_genres/model.pkl",
-        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/content_based_genres/meta.json",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
-        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
-        "mlflow_run_id": "f5d634c763ca499ea4a293279eaa709f"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/content_based_genres/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/content_based_genres/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/training_summary.json",
+        "mlflow_run_id": "b6f53019822f40f9addfc06246fad872"
       },
       "metrics": {
         "users_with_profile": 942,
         "n_genres": 19,
-        "fit_seconds": 4.5
+        "fit_seconds": 0.74
       }
     },
     {
       "stage": "train:hybrid",
-      "started_at": "2026-11-11T04:33:06+00:00",
-      "finished_at": "2026-11-11T04:33:11+00:00",
-      "seconds": 5.17,
+      "started_at": "2026-11-12T05:18:59+00:00",
+      "finished_at": "2026-11-12T05:19:04+00:00",
+      "seconds": 5.06,
       "outputs": {
-        "model": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/hybrid/model.pkl",
-        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/hybrid/meta.json",
-        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/registry.json",
-        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/models/training_summary.json",
-        "mlflow_run_id": "8e79132841b84b1eb2d29ace09fefb26"
+        "model": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/hybrid/model.pkl",
+        "meta": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/hybrid/meta.json",
+        "registry": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/registry.json",
+        "training_summary": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/models/training_summary.json",
+        "mlflow_run_id": "12593f2c641544d0993395f7f50876b1"
       },
       "metrics": {
         "interactions_fit": 79619,
         "users_with_profile": 942,
-        "fit_seconds": 5.17
+        "fit_seconds": 5.06
       }
     },
     {
       "stage": "evaluation",
-      "started_at": "2026-11-11T04:33:11+00:00",
-      "finished_at": "2026-11-11T04:33:13+00:00",
-      "seconds": 1.67,
+      "started_at": "2026-11-12T05:19:04+00:00",
+      "finished_at": "2026-11-12T05:19:06+00:00",
+      "seconds": 1.62,
       "outputs": {
-        "csv": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/model_evaluation.csv",
-        "markdown": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/model_evaluation.md",
-        "figure": "/home/khadeeja/Documents/Projects/wms_store/project/wms-dmml-main/reports/figures/metrics_comparison.png"
+        "csv": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/reports/model_evaluation.csv",
+        "markdown": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/reports/model_evaluation.md",
+        "figure": "/home/khadeeja/Documents/Projects/wms_store/project/movielens-data-pipeline-dmml/reports/figures/metrics_comparison.png"
       },
       "metrics": {
         "popularity": {

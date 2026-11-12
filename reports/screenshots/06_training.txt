@@ -1,33 +1,39 @@
-2026-11-04 09:11:44 | pipeline.training | INFO    | [popularity] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:11:45 | pipeline.training | INFO    | [popularity] trained in 4.8s | {'items_scored': 1611, 'global_mean_rating': 3.5806, 'fit_seconds': 4.81} | mlflow run 2a31bba2
-2026-11-04 09:11:45 | pipeline.training | INFO    | [implicit_als] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:11:45 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=5.0   val NDCG@10 0.1213  P@10 0.0772
-2026-11-04 09:11:46 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=10.0  val NDCG@10 0.1152  P@10 0.0738
-2026-11-04 09:11:47 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=20.0  val NDCG@10 0.1029  P@10 0.0659
-2026-11-04 09:11:47 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=5.0   val NDCG@10 0.1177  P@10 0.0743
-2026-11-04 09:11:48 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=10.0  val NDCG@10 0.1101  P@10 0.0687
-2026-11-04 09:11:49 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=20.0  val NDCG@10 0.0991  P@10 0.0621
-2026-11-04 09:11:49 | pipeline.training | INFO    | [implicit_als] best candidate {'n_factors': 20, 'alpha': 5.0, 'regularization': 0.1, 'n_epochs': 10} (val NDCG@10 0.1213)
-2026-11-04 09:11:50 | pipeline.training | INFO    | [implicit_als] trained in 5.4s | {'interactions_fit': 79619, 'fit_seconds': 5.39} | mlflow run 32915478
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  1/12  train RMSE 0.9041
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  2/12  train RMSE 0.8213
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  3/12  train RMSE 0.7442
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  4/12  train RMSE 0.7130
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  5/12  train RMSE 0.6986
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  6/12  train RMSE 0.6909
-2026-11-04 09:11:50 | pipeline.training | INFO    | [als_matrix_factorization] epoch  7/12  train RMSE 0.6862
-2026-11-04 09:11:51 | pipeline.training | INFO    | [als_matrix_factorization] epoch  8/12  train RMSE 0.6831
-2026-11-04 09:11:51 | pipeline.training | INFO    | [als_matrix_factorization] epoch  9/12  train RMSE 0.6808
-2026-11-04 09:11:51 | pipeline.training | INFO    | [als_matrix_factorization] epoch 10/12  train RMSE 0.6791
-2026-11-04 09:11:51 | pipeline.training | INFO    | [als_matrix_factorization] epoch 11/12  train RMSE 0.6778
-2026-11-04 09:11:51 | pipeline.training | INFO    | [als_matrix_factorization] epoch 12/12  train RMSE 0.6768
-2026-11-04 09:11:51 | pipeline.training | INFO    | [als_matrix_factorization] trained in 0.9s | {'train_rmse': 0.6768, 'global_mean_rating': 3.5806, 'fit_seconds': 0.87} | mlflow run 2df86b3b
-2026-11-04 09:11:51 | pipeline.training | INFO    | [content_based_genres] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:11:51 | pipeline.training | INFO    | [content_based_genres] trained in 0.1s | {'users_with_profile': 942, 'n_genres': 19, 'fit_seconds': 0.1} | mlflow run 10a2efd8
-{"stage": "train:popularity", "seconds": 4.81, "metrics": {"items_scored": 1611, "global_mean_rating": 3.5806, "fit_seconds": 4.81}}
-{"stage": "train:implicit_als", "seconds": 5.39, "metrics": {"interactions_fit": 79619, "fit_seconds": 5.39}}
-{"stage": "train:als_matrix_factorization", "seconds": 0.87, "metrics": {"train_rmse": 0.6768, "global_mean_rating": 3.5806, "fit_seconds": 0.87}}
+2026-11-12 08:01:46 | pipeline.training | INFO    | [popularity] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:01:46 | pipeline.training | INFO    | [popularity] trained in 4.4s | {'items_scored': 1611, 'global_mean_rating': 3.5806, 'fit_seconds': 4.42} | mlflow run 7d40c7ee
+2026-11-12 08:01:46 | pipeline.training | INFO    | [implicit_als] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:01:47 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=5.0   val NDCG@10 0.1213  P@10 0.0772
+2026-11-12 08:01:47 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=10.0  val NDCG@10 0.1152  P@10 0.0738
+2026-11-12 08:01:48 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=20.0  val NDCG@10 0.1029  P@10 0.0659
+2026-11-12 08:01:49 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=5.0   val NDCG@10 0.1177  P@10 0.0743
+2026-11-12 08:01:50 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=10.0  val NDCG@10 0.1101  P@10 0.0687
+2026-11-12 08:01:51 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=20.0  val NDCG@10 0.0991  P@10 0.0621
+2026-11-12 08:01:51 | pipeline.training | INFO    | [implicit_als] best candidate {'n_factors': 20, 'alpha': 5.0, 'regularization': 0.1, 'n_epochs': 10} (val NDCG@10 0.1213)
+2026-11-12 08:01:51 | pipeline.training | INFO    | [implicit_als] trained in 5.3s | {'interactions_fit': 79619, 'fit_seconds': 5.3} | mlflow run 7cd70c43
+2026-11-12 08:01:51 | pipeline.training | INFO    | [als_matrix_factorization] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  1/12  train RMSE 0.9041
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  2/12  train RMSE 0.8213
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  3/12  train RMSE 0.7442
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  4/12  train RMSE 0.7130
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  5/12  train RMSE 0.6986
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  6/12  train RMSE 0.6909
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  7/12  train RMSE 0.6862
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  8/12  train RMSE 0.6831
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch  9/12  train RMSE 0.6808
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch 10/12  train RMSE 0.6791
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch 11/12  train RMSE 0.6778
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] epoch 12/12  train RMSE 0.6768
+2026-11-12 08:01:52 | pipeline.training | INFO    | [als_matrix_factorization] trained in 0.9s | {'train_rmse': 0.6768, 'global_mean_rating': 3.5806, 'fit_seconds': 0.9} | mlflow run e8b94d22
+2026-11-12 08:01:52 | pipeline.training | INFO    | [content_based_genres] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:01:53 | pipeline.training | INFO    | [content_based_genres] trained in 0.1s | {'users_with_profile': 942, 'n_genres': 19, 'fit_seconds': 0.1} | mlflow run 469f68d9
+2026-11-12 08:01:53 | pipeline.training | INFO    | [hybrid] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:01:53 | pipeline.training | INFO    | [hybrid] tuning blend weights: fit part 67259 rows, validation 12360 rows, 898 users
+2026-11-12 08:01:57 | pipeline.training | INFO    | [hybrid] best weights {'w_cf': 1.0, 'w_genre': 1.0, 'w_popularity': 1.0} (val NDCG@10 0.1321)
+2026-11-12 08:01:58 | pipeline.training | INFO    | [hybrid] collaborative half: the trained implicit_als model
+2026-11-12 08:01:58 | pipeline.training | INFO    | [hybrid] trained in 5.0s | {'interactions_fit': 79619, 'users_with_profile': 942, 'fit_seconds': 5.01} | mlflow run cae5c45f
+{"stage": "train:popularity", "seconds": 4.42, "metrics": {"items_scored": 1611, "global_mean_rating": 3.5806, "fit_seconds": 4.42}}
+{"stage": "train:implicit_als", "seconds": 5.3, "metrics": {"interactions_fit": 79619, "fit_seconds": 5.3}}
+{"stage": "train:als_matrix_factorization", "seconds": 0.9, "metrics": {"train_rmse": 0.6768, "global_mean_rating": 3.5806, "fit_seconds": 0.9}}
 {"stage": "train:content_based_genres", "seconds": 0.1, "metrics": {"users_with_profile": 942, "n_genres": 19, "fit_seconds": 0.1}}
+{"stage": "train:hybrid", "seconds": 5.01, "metrics": {"interactions_fit": 79619, "users_with_profile": 942, "fit_seconds": 5.01}}
 
-[exit code 0, 13.0s]
+[exit code 0, 17.8s]

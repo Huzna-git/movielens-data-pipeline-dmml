@@ -8,13 +8,13 @@
   "train_metrics": {
     "items_scored": 1611,
     "global_mean_rating": 3.5806,
-    "fit_seconds": 4.38
+    "fit_seconds": 0.68
   },
-  "train_seconds": 4.38,
+  "train_seconds": 0.68,
   "tuned_on_validation_split": false,
-  "mlflow_run_id": "18ba2905c9a34d8891428a3faebe2d0f",
+  "mlflow_run_id": "6397cbcfba27409292234a560a416136",
   "feature_version": "09dbf74de6",
   "dataset": "movielens-100k",
   "train_rows": 79619,
-  "trained_at": "2026-11-11T04:33:00+00:00"
+  "trained_at": "2026-11-12T05:18:52+00:00"
 }

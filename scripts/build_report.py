@@ -27,14 +27,19 @@ h2 { font-size: 14pt; margin: 16pt 0 6pt 0; border-bottom: 1px solid #bbb; paddi
 h3 { font-size: 11.5pt; margin: 12pt 0 4pt 0; }
 p { margin: 5pt 0; text-align: justify; }
 ul, ol { margin: 4pt 0 4pt 18pt; padding: 0; } li { margin: 2pt 0; }
-table { border-collapse: collapse; width: 100%; font-size: 9.2pt; margin: 6pt 0; page-break-inside: avoid; table-layout: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 9.2pt; margin: 6pt 0; page-break-inside: auto; table-layout: auto; }
+thead { display: table-header-group; }                 /* repeat the header when a long table breaks across a page */
+tr { page-break-inside: avoid; }                        /* but never split a single row */
 .stages td:nth-child(1) { width: 3%; } .stages td:nth-child(2) { width: 16%; } .stages td:nth-child(3) { width: 53%; } .stages td:nth-child(4) { width: 28%; }
 td code { word-break: break-all; white-space: normal; }
 th, td { border: 1px solid #c9c9c9; padding: 3pt 5pt; vertical-align: top; } th { background: #f1f3f5; text-align: left; }
 code { font-family: Menlo, 'DejaVu Sans Mono', monospace; font-size: 8.8pt; background: #f3f4f6; padding: 0 2px; border-radius: 2px; }
 pre { background: #f3f4f6; padding: 6pt 8pt; font-size: 8.5pt; overflow-x: auto; border-radius: 3px; white-space: pre-wrap; }
 img { max-width: 100%; display: block; margin: 5pt auto; border: 1px solid #ddd; }
-img[alt=architecture] { max-width: 88%; } img[alt=metrics] { max-width: 82%; }
+img[alt=architecture] { max-width: 100%; } img[alt=metrics] { max-width: 92%; }
+/* screenshots: use the full text column so the terminal/UI text is legible */
+figure img { width: 100%; max-width: 100%; }
+figure img[alt=architecture], figure img[alt=metrics] { width: auto; }
 figure { margin: 8pt 0; page-break-inside: avoid; } figcaption { font-size: 9pt; color: #444; text-align: center; margin-top: 3pt; }
 .meta { color: #444; font-size: 10pt; margin-bottom: 10pt; }
 .pagebreak { page-break-before: always; }

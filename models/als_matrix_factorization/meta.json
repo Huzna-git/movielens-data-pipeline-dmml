@@ -13,13 +13,13 @@
   "train_metrics": {
     "train_rmse": 0.6768,
     "global_mean_rating": 3.5806,
-    "fit_seconds": 5.74
+    "fit_seconds": 2.13
   },
-  "train_seconds": 5.74,
+  "train_seconds": 2.13,
   "tuned_on_validation_split": false,
-  "mlflow_run_id": "7bb3abbf95064c11b54cd23eddd8e613",
+  "mlflow_run_id": "b682aa1db08b40a8a4d865e6af45db0f",
   "feature_version": "09dbf74de6",
   "dataset": "movielens-100k",
   "train_rows": 79619,
-  "trained_at": "2026-11-11T04:33:01+00:00"
+  "trained_at": "2026-11-12T05:18:54+00:00"
 }

@@ -1,86 +1,111 @@
-2026-11-04 09:12:04 | pipeline.ingestion | INFO    | source = movielens-100k
-2026-11-04 09:12:04 | pipeline.ingestion | INFO    | archive already present and verified: ml-100k.zip
-2026-11-04 09:12:05 | pipeline.ingestion | INFO    | wrote users             943 rows x 5 cols -> users.csv
-2026-11-04 09:12:05 | pipeline.ingestion | INFO    | wrote items            1682 rows x 5 cols -> items.csv
-2026-11-04 09:12:05 | pipeline.ingestion | INFO    | wrote interactions   100000 rows x 4 cols -> interactions.csv
-2026-11-04 09:12:05 | pipeline.ingestion | INFO    | ingestion complete: {'users': 943, 'items': 1682, 'interactions': 100000}
-2026-11-04 09:12:05 | pipeline.validation | INFO    | loaded raw tables: {'users': 943, 'items': 1682, 'interactions': 100000}
-2026-11-04 09:12:05 | pipeline.validation | INFO    | users         rows in     943 | errors     0 | warnings     0 | rows out     943
-2026-11-04 09:12:05 | pipeline.validation | INFO    | items         rows in    1682 | errors     0 | warnings    37 | rows out    1682
-2026-11-04 09:12:05 | pipeline.validation | INFO    | interactions  rows in  100000 | errors     0 | warnings     0 | rows out  100000
-2026-11-04 09:12:05 | pipeline.validation | WARNING | WARN  items         missing_release_date            1 rows
-2026-11-04 09:12:05 | pipeline.validation | WARNING | WARN  items         duplicate_title                36 rows
-2026-11-04 09:12:05 | pipeline.validation | INFO    | validation complete: 22 checks, 0 FAIL, 2 WARN, 0 error rows -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.md
-2026-11-04 09:12:05 | pipeline.preparation | INFO    | cleaned: users 943 | items 1682 | interactions 100000
-2026-11-04 09:12:05 | pipeline.preparation | INFO    | items with no release date: 1 (kept, release_year flagged missing)
-2026-11-04 09:12:05 | pipeline.preparation | INFO    | interaction window: 1997-09-20 .. 1998-04-22
-2026-11-04 09:12:05 | pipeline.preparation | INFO    | split per_user_time: train 79619 rows / test 20381 rows (20.4%); 88 test rows name an item unseen in train
-2026-11-04 09:12:05 | pipeline.preparation | INFO    | preparation complete
-2026-11-04 09:12:05 | pipeline.transformation | INFO    | user_activity_summary: 943 users; median interactions/user = 52; mean rating = 3.62
-2026-11-04 09:12:05 | pipeline.transformation | INFO    | item_popularity: 1682 items; 71 never rated in train; top-5: Star Wars (1977) (523) | Fargo (1996) (471) | Raiders of the Lost Ark (1981) (374) | Godfather, The (1972) (367) | Silence of the Lambs, The (1991) (346)
-2026-11-04 09:12:05 | pipeline.transformation | INFO    | item_genres: 1682 items x 19 genres
-2026-11-04 09:12:05 | pipeline.transformation | INFO    | user_item_matrix: shape (943, 1682), 79619 non-zeros, density 0.0502 (sparsity 94.98%)
-2026-11-04 09:12:05 | pipeline.transformation | INFO    | transformation complete
-2026-11-04 09:12:05 | pipeline.features | INFO    | reference time = 1998-04-22 23:10:38+00:00 (latest train timestamp); like threshold = 4.0
-2026-11-04 09:12:05 | pipeline.features | INFO    | user features:          943 rows x 30 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/user_features.parquet
-2026-11-04 09:12:05 | pipeline.features | INFO    | item features:         1682 rows x 29 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/item_features.parquet
-2026-11-04 09:12:05 | pipeline.features | INFO    | interaction features: 79619 rows x  4 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/interaction_features.parquet
-2026-11-04 09:12:05 | pipeline.features | INFO    | feature catalog written: /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/feature_catalog.md (63 features)
-2026-11-04 09:12:05 | pipeline.features | INFO    | sample user features:
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | source = movielens-100k
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | archive already present and verified: ml-100k.zip
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | fault injection: 390 corrupt rows appended {'interactions.missing_rating': 40, 'interactions.rating_out_of_range': 40, 'interactions.rating_wrong_type': 40, 'interactions.timestamp_out_of_range': 40, 'interactions.timestamp_wrong_type': 40, 'interactions.exact_duplicate': 40, 'interactions.unknown_user': 40, 'interactions.unknown_item': 40, 'interactions.missing_user_id': 40, 'users.exact_duplicate': 5, 'users.invalid_age': 5, 'users.invalid_gender': 5, 'items.exact_duplicate': 5, 'items.missing_title': 5, 'items.unparseable_date': 5}
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | wrote users             958 rows x 5 cols -> users.csv
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | wrote items            1697 rows x 5 cols -> items.csv
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | wrote interactions   100360 rows x 4 cols -> interactions.csv
+2026-11-12 08:04:16 | pipeline.ingestion | INFO    | ingestion complete: {'users': 958, 'items': 1697, 'interactions': 100360}
+2026-11-12 08:04:16 | pipeline.validation | INFO    | loaded raw tables: {'users': 958, 'items': 1697, 'interactions': 100360}
+2026-11-12 08:04:16 | pipeline.validation | INFO    | users         rows in     958 | errors    15 | warnings     0 | rows out     943
+2026-11-12 08:04:16 | pipeline.validation | INFO    | items         rows in    1697 | errors    15 | warnings    41 | rows out    1682
+2026-11-12 08:04:16 | pipeline.validation | INFO    | interactions  rows in  100360 | errors   360 | warnings     0 | rows out  100000
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  users         invalid_type                    2 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  users         missing_value                   2 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  users         duplicate_row                   5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  items         missing_value                   5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  items         duplicate_row                   5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  invalid_type                   66 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  missing_value                 160 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  duplicate_row                  40 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  conflicting_duplicate_key     202 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  users         duplicate_key                   5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  users         out_of_range                    3 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  users         invalid_category                5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  items         duplicate_key                   5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  items         unparseable_date                5 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | WARN  items         missing_release_date            1 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | WARN  items         duplicate_title                45 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  out_of_range                   80 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  unknown_user                   40 rows
+2026-11-12 08:04:16 | pipeline.validation | WARNING | FAIL  interactions  unknown_item                   40 rows
+2026-11-12 08:04:16 | pipeline.validation | INFO    | validation complete: 22 checks, 17 FAIL, 2 WARN, 390 error rows -> ./reports/validation_report.md
+2026-11-12 08:04:16 | pipeline.preparation | INFO    | cleaned: users 943 | items 1682 | interactions 100000
+2026-11-12 08:04:16 | pipeline.preparation | INFO    | items with no release date: 1 (kept, release_year flagged missing)
+2026-11-12 08:04:16 | pipeline.preparation | INFO    | interaction window: 1997-09-20 .. 1998-04-22
+2026-11-12 08:04:16 | pipeline.preparation | INFO    | split per_user_time: train 79619 rows / test 20381 rows (20.4%); 88 test rows name an item unseen in train
+2026-11-12 08:04:16 | pipeline.preparation | INFO    | preparation complete
+2026-11-12 08:04:16 | pipeline.transformation | INFO    | user_activity_summary: 943 users; median interactions/user = 52; mean rating = 3.62
+2026-11-12 08:04:17 | pipeline.transformation | INFO    | item_popularity: 1682 items; 71 never rated in train; top-5: Star Wars (1977) (523) | Fargo (1996) (471) | Raiders of the Lost Ark (1981) (374) | Godfather, The (1972) (367) | Silence of the Lambs, The (1991) (346)
+2026-11-12 08:04:17 | pipeline.transformation | INFO    | item_genres: 1682 items x 19 genres
+2026-11-12 08:04:17 | pipeline.transformation | INFO    | user_item_matrix: shape (943, 1682), 79619 non-zeros, density 0.0502 (sparsity 94.98%)
+2026-11-12 08:04:17 | pipeline.transformation | INFO    | transformation complete
+2026-11-12 08:04:17 | pipeline.features | INFO    | reference time = 1998-04-22 23:10:38+00:00 (latest train timestamp); like threshold = 4.0
+2026-11-12 08:04:17 | pipeline.features | INFO    | user features:          943 rows x 30 features -> ./data/features/user_features.parquet
+2026-11-12 08:04:17 | pipeline.features | INFO    | item features:         1682 rows x 29 features -> ./data/features/item_features.parquet
+2026-11-12 08:04:17 | pipeline.features | INFO    | interaction features: 79619 rows x  4 features -> ./data/features/interaction_features.parquet
+2026-11-12 08:04:17 | pipeline.features | INFO    | feature catalog written: ./reports/feature_catalog.md (63 features)
+2026-11-12 08:04:17 | pipeline.features | INFO    | sample user features:
  user_id  user_n_interactions  user_mean_rating  user_days_since_last_interaction user_preferred_genre
        1                  217          3.599078                        170.644421                drama
        2                   49          3.714286                         54.798079                drama
        3                   43          2.418605                         46.865544              mystery
-2026-11-04 09:12:05 | pipeline.features | INFO    | feature engineering complete
-2026-11-04 09:12:06 | pipeline.training | INFO    | [implicit_als] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:12:06 | pipeline.training | INFO    | [als_matrix_factorization] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:12:06 | pipeline.training | INFO    | [popularity] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:12:07 | pipeline.training | INFO    | [popularity] trained in 1.1s | {'items_scored': 1611, 'global_mean_rating': 3.5806, 'fit_seconds': 1.07} | mlflow run cbbf35d9
-2026-11-04 09:12:07 | pipeline.training | INFO    | [als_matrix_factorization] epoch  1/12  train RMSE 0.9041
-2026-11-04 09:12:07 | pipeline.training | INFO    | [content_based_genres] training on 79619 interactions, 943 users, 1682 items
-2026-11-04 09:12:07 | pipeline.training | INFO    | [als_matrix_factorization] epoch  2/12  train RMSE 0.8213
-2026-11-04 09:12:07 | pipeline.training | INFO    | [content_based_genres] trained in 0.2s | {'users_with_profile': 942, 'n_genres': 19, 'fit_seconds': 0.2} | mlflow run 5fba1d9b
-2026-11-04 09:12:07 | pipeline.training | INFO    | [als_matrix_factorization] epoch  3/12  train RMSE 0.7442
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch  4/12  train RMSE 0.7130
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch  5/12  train RMSE 0.6986
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch  6/12  train RMSE 0.6909
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch  7/12  train RMSE 0.6862
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch  8/12  train RMSE 0.6831
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch  9/12  train RMSE 0.6808
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch 10/12  train RMSE 0.6791
-2026-11-04 09:12:08 | pipeline.training | INFO    | [als_matrix_factorization] epoch 11/12  train RMSE 0.6778
-2026-11-04 09:12:09 | pipeline.training | INFO    | [als_matrix_factorization] epoch 12/12  train RMSE 0.6768
-2026-11-04 09:12:09 | pipeline.training | INFO    | [als_matrix_factorization] trained in 3.0s | {'train_rmse': 0.6768, 'global_mean_rating': 3.5806, 'fit_seconds': 3.02} | mlflow run a623d3e3
-2026-11-04 09:12:09 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=5.0   val NDCG@10 0.1213  P@10 0.0772
-2026-11-04 09:12:09 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=10.0  val NDCG@10 0.1152  P@10 0.0738
-2026-11-04 09:12:10 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=20.0  val NDCG@10 0.1029  P@10 0.0659
-2026-11-04 09:12:11 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=5.0   val NDCG@10 0.1177  P@10 0.0743
-2026-11-04 09:12:12 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=10.0  val NDCG@10 0.1101  P@10 0.0687
-2026-11-04 09:12:13 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=20.0  val NDCG@10 0.0991  P@10 0.0621
-2026-11-04 09:12:13 | pipeline.training | INFO    | [implicit_als] best candidate {'n_factors': 20, 'alpha': 5.0, 'regularization': 0.1, 'n_epochs': 10} (val NDCG@10 0.1213)
-2026-11-04 09:12:13 | pipeline.training | INFO    | [implicit_als] trained in 7.9s | {'interactions_fit': 79619, 'fit_seconds': 7.9} | mlflow run 267930bb
-2026-11-04 09:12:13 | pipeline.evaluation | INFO    | K=10, relevance threshold=4.0, test rows=20381, test users=943, catalogue=1682 items
-2026-11-04 09:12:14 | pipeline.evaluation | INFO    | popularity                 P@10 0.0773 | R@10 0.0659 | NDCG@10 0.0957 | coverage 0.0422 | diversity 0.6458 | RMSE 1.0734 | MAE 0.8587
-2026-11-04 09:12:14 | pipeline.evaluation | INFO    | implicit_als               P@10 0.1102 | R@10 0.1341 | NDCG@10 0.1476 | coverage 0.3532 | diversity 0.7010 | RMSE n/a | MAE n/a
-2026-11-04 09:12:14 | pipeline.evaluation | INFO    | als_matrix_factorization   P@10 0.0760 | R@10 0.0634 | NDCG@10 0.0903 | coverage 0.2027 | diversity 0.6878 | RMSE 0.9744 | MAE 0.7695
-2026-11-04 09:12:15 | pipeline.evaluation | INFO    | content_based_genres       P@10 0.0178 | R@10 0.0167 | NDCG@10 0.0232 | coverage 0.4810 | diversity 0.1305 | RMSE 1.1246 | MAE 0.8933
-2026-11-04 09:12:15 | pipeline.evaluation | INFO    | best model by NDCG@10: implicit_als
-2026-11-04 09:12:15 | pipeline.evaluation | INFO    | evaluation complete -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/model_evaluation.md
-09:12:04.895 | INFO    | Flow run 'blazing-raccoon' - Beginning flow run 'blazing-raccoon' for flow 'recommendation-pipeline'
-09:12:04.901 | INFO    | Flow run 'blazing-raccoon' - View at http://127.0.0.1:4200/runs/flow-run/9f63f54d-1e48-484a-921a-99922f5a3b7e
-09:12:04.907 | INFO    | Flow run 'blazing-raccoon' - pipeline start: dataset=movielens-100k split=per_user_time
-09:12:05.057 | INFO    | Task run 'ingest_data-43c' - Finished in state Completed()
-09:12:05.412 | INFO    | Task run 'validate_data-9b5' - Finished in state Completed()
-09:12:05.535 | INFO    | Task run 'prepare_data-624' - Finished in state Completed()
-09:12:05.737 | INFO    | Task run 'transform_data-a1f' - Finished in state Completed()
-09:12:05.968 | INFO    | Task run 'build_features-a47' - Finished in state Completed()
-09:12:07.278 | INFO    | Task run 'train_popularity' - Finished in state Completed()
-09:12:07.655 | INFO    | Task run 'train_content_based_genres' - Finished in state Completed()
-09:12:09.061 | INFO    | Task run 'train_als_matrix_factorization' - Finished in state Completed()
-09:12:13.937 | INFO    | Task run 'train_implicit_als' - Finished in state Completed()
-09:12:15.318 | INFO    | Task run 'evaluate_models-6aa' - Finished in state Completed()
-09:12:15.324 | INFO    | Task run 'write_run_manifest-40e' - Finished in state Completed()
-09:12:15.325 | INFO    | Flow run 'blazing-raccoon' - pipeline finished; best model by NDCG: implicit_als; manifest /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/run_manifest.json
-09:12:15.921 | INFO    | Flow run 'blazing-raccoon' - Finished in state Completed()
+2026-11-12 08:04:17 | pipeline.features | INFO    | feature engineering complete
+2026-11-12 08:04:18 | pipeline.training | INFO    | [implicit_als] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:04:18 | pipeline.training | INFO    | [als_matrix_factorization] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:04:18 | pipeline.training | INFO    | [content_based_genres] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:04:18 | pipeline.training | INFO    | [als_matrix_factorization] epoch  1/12  train RMSE 0.9041
+2026-11-12 08:04:18 | pipeline.training | INFO    | [popularity] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:04:18 | pipeline.training | INFO    | [content_based_genres] trained in 0.9s | {'users_with_profile': 942, 'n_genres': 19, 'fit_seconds': 0.95} | mlflow run 4fde4d47
+2026-11-12 08:04:18 | pipeline.training | INFO    | [als_matrix_factorization] epoch  2/12  train RMSE 0.8213
+2026-11-12 08:04:18 | pipeline.training | INFO    | [popularity] trained in 1.2s | {'items_scored': 1611, 'global_mean_rating': 3.5806, 'fit_seconds': 1.21} | mlflow run 65e6dd23
+2026-11-12 08:04:18 | pipeline.training | INFO    | [als_matrix_factorization] epoch  3/12  train RMSE 0.7442
+2026-11-12 08:04:18 | pipeline.training | INFO    | [als_matrix_factorization] epoch  4/12  train RMSE 0.7130
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch  5/12  train RMSE 0.6986
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch  6/12  train RMSE 0.6909
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch  7/12  train RMSE 0.6862
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch  8/12  train RMSE 0.6831
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch  9/12  train RMSE 0.6808
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch 10/12  train RMSE 0.6791
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch 11/12  train RMSE 0.6778
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] epoch 12/12  train RMSE 0.6768
+2026-11-12 08:04:19 | pipeline.training | INFO    | [als_matrix_factorization] trained in 2.3s | {'train_rmse': 0.6768, 'global_mean_rating': 3.5806, 'fit_seconds': 2.3} | mlflow run b131c6fc
+2026-11-12 08:04:20 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=5.0   val NDCG@10 0.1213  P@10 0.0772
+2026-11-12 08:04:20 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=10.0  val NDCG@10 0.1152  P@10 0.0738
+2026-11-12 08:04:21 | pipeline.training | INFO    | [implicit_als] tuning f=20  alpha=20.0  val NDCG@10 0.1029  P@10 0.0659
+2026-11-12 08:04:22 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=5.0   val NDCG@10 0.1177  P@10 0.0743
+2026-11-12 08:04:23 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=10.0  val NDCG@10 0.1101  P@10 0.0687
+2026-11-12 08:04:24 | pipeline.training | INFO    | [implicit_als] tuning f=40  alpha=20.0  val NDCG@10 0.0991  P@10 0.0621
+2026-11-12 08:04:24 | pipeline.training | INFO    | [implicit_als] best candidate {'n_factors': 20, 'alpha': 5.0, 'regularization': 0.1, 'n_epochs': 10} (val NDCG@10 0.1213)
+2026-11-12 08:04:24 | pipeline.training | INFO    | [implicit_als] trained in 7.3s | {'interactions_fit': 79619, 'fit_seconds': 7.27} | mlflow run 34202ce4
+2026-11-12 08:04:24 | pipeline.training | INFO    | [hybrid] training on 79619 interactions, 943 users, 1682 items
+2026-11-12 08:04:25 | pipeline.training | INFO    | [hybrid] tuning blend weights: fit part 67259 rows, validation 12360 rows, 898 users
+2026-11-12 08:04:29 | pipeline.training | INFO    | [hybrid] best weights {'w_cf': 1.0, 'w_genre': 1.0, 'w_popularity': 1.0} (val NDCG@10 0.1321)
+2026-11-12 08:04:30 | pipeline.training | INFO    | [hybrid] collaborative half: the trained implicit_als model
+2026-11-12 08:04:30 | pipeline.training | INFO    | [hybrid] trained in 5.2s | {'interactions_fit': 79619, 'users_with_profile': 942, 'fit_seconds': 5.19} | mlflow run b271411c
+2026-11-12 08:04:30 | pipeline.evaluation | INFO    | K=10, relevance threshold=4.0, test rows=20381, test users=943, catalogue=1682 items
+2026-11-12 08:04:30 | pipeline.evaluation | INFO    | popularity                 P@10 0.0773 | R@10 0.0659 | NDCG@10 0.0957 | coverage 0.0422 | diversity 0.6458 | RMSE 1.0734 | MAE 0.8587
+2026-11-12 08:04:30 | pipeline.evaluation | INFO    | implicit_als               P@10 0.1102 | R@10 0.1341 | NDCG@10 0.1476 | coverage 0.3532 | diversity 0.7010 | RMSE n/a | MAE n/a
+2026-11-12 08:04:30 | pipeline.evaluation | INFO    | als_matrix_factorization   P@10 0.0760 | R@10 0.0634 | NDCG@10 0.0903 | coverage 0.2027 | diversity 0.6878 | RMSE 0.9744 | MAE 0.7695
+2026-11-12 08:04:31 | pipeline.evaluation | INFO    | content_based_genres       P@10 0.0178 | R@10 0.0167 | NDCG@10 0.0232 | coverage 0.4810 | diversity 0.1305 | RMSE 1.1246 | MAE 0.8933
+2026-11-12 08:04:31 | pipeline.evaluation | INFO    | hybrid                     P@10 0.1161 | R@10 0.1411 | NDCG@10 0.1544 | coverage 0.2438 | diversity 0.5087 | RMSE n/a | MAE n/a
+2026-11-12 08:04:31 | pipeline.evaluation | INFO    | best model by NDCG@10: hybrid
+2026-11-12 08:04:31 | pipeline.evaluation | INFO    | evaluation complete -> ./reports/model_evaluation.md
+08:04:16.275 | INFO    | Flow run 'mystic-teal' - Beginning flow run 'mystic-teal' for flow 'recommendation-pipeline'
+08:04:16.281 | INFO    | Flow run 'mystic-teal' - View at http://127.0.0.1:4200/runs/flow-run/e15bc093-0924-4a74-930a-7b3aa2df2eaf
+08:04:16.289 | INFO    | Flow run 'mystic-teal' - pipeline start: dataset=movielens-100k split=per_user_time
+08:04:16.461 | INFO    | Task run 'ingest_data-090' - Finished in state Completed()
+08:04:16.799 | INFO    | Task run 'validate_data-2e9' - Finished in state Completed()
+08:04:16.937 | INFO    | Task run 'prepare_data-c02' - Finished in state Completed()
+08:04:17.143 | INFO    | Task run 'transform_data-0b8' - Finished in state Completed()
+08:04:17.447 | INFO    | Task run 'build_features-8bb' - Finished in state Completed()
+08:04:18.730 | INFO    | Task run 'train_content_based_genres' - Finished in state Completed()
+08:04:18.813 | INFO    | Task run 'train_popularity' - Finished in state Completed()
+08:04:19.841 | INFO    | Task run 'train_als_matrix_factorization' - Finished in state Completed()
+08:04:24.814 | INFO    | Task run 'train_implicit_als' - Finished in state Completed()
+08:04:30.063 | INFO    | Task run 'train_hybrid' - Finished in state Completed()
+08:04:31.722 | INFO    | Task run 'evaluate_models-bfc' - Finished in state Completed()
+08:04:31.731 | INFO    | Task run 'write_run_manifest-e0e' - Finished in state Completed()
+08:04:31.731 | INFO    | Flow run 'mystic-teal' - pipeline finished; best model by NDCG: hybrid; manifest ./reports/run_manifest.json
+08:04:32.304 | INFO    | Flow run 'mystic-teal' - Finished in state Completed()
 
-[exit code 0, 13.7s]
+[exit code 0, 18.7s]

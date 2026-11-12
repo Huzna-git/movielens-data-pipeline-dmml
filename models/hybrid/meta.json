@@ -15,13 +15,13 @@
   "train_metrics": {
     "interactions_fit": 79619,
     "users_with_profile": 942,
-    "fit_seconds": 5.17
+    "fit_seconds": 5.06
   },
-  "train_seconds": 5.17,
+  "train_seconds": 5.06,
   "tuned_on_validation_split": true,
-  "mlflow_run_id": "8e79132841b84b1eb2d29ace09fefb26",
+  "mlflow_run_id": "12593f2c641544d0993395f7f50876b1",
   "feature_version": "09dbf74de6",
   "dataset": "movielens-100k",
   "train_rows": 79619,
-  "trained_at": "2026-11-11T04:33:11+00:00"
+  "trained_at": "2026-11-12T05:19:04+00:00"
 }

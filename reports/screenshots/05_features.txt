@@ -1,14 +1,14 @@
-2026-11-04 09:11:38 | pipeline.features | INFO    | reference time = 1998-04-22 23:10:38+00:00 (latest train timestamp); like threshold = 4.0
-2026-11-04 09:11:38 | pipeline.features | INFO    | user features:          943 rows x 30 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/user_features.parquet
-2026-11-04 09:11:38 | pipeline.features | INFO    | item features:         1682 rows x 29 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/item_features.parquet
-2026-11-04 09:11:38 | pipeline.features | INFO    | interaction features: 79619 rows x  4 features -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/data/features/interaction_features.parquet
-2026-11-04 09:11:38 | pipeline.features | INFO    | feature catalog written: /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/feature_catalog.md (63 features)
-2026-11-04 09:11:38 | pipeline.features | INFO    | sample user features:
+2026-11-12 08:01:40 | pipeline.features | INFO    | reference time = 1998-04-22 23:10:38+00:00 (latest train timestamp); like threshold = 4.0
+2026-11-12 08:01:40 | pipeline.features | INFO    | user features:          943 rows x 30 features -> ./data/features/user_features.parquet
+2026-11-12 08:01:40 | pipeline.features | INFO    | item features:         1682 rows x 29 features -> ./data/features/item_features.parquet
+2026-11-12 08:01:40 | pipeline.features | INFO    | interaction features: 79619 rows x  4 features -> ./data/features/interaction_features.parquet
+2026-11-12 08:01:40 | pipeline.features | INFO    | feature catalog written: ./reports/feature_catalog.md (63 features)
+2026-11-12 08:01:40 | pipeline.features | INFO    | sample user features:
  user_id  user_n_interactions  user_mean_rating  user_days_since_last_interaction user_preferred_genre
        1                  217          3.599078                        170.644421                drama
        2                   49          3.714286                         54.798079                drama
        3                   43          2.418605                         46.865544              mystery
-2026-11-04 09:11:38 | pipeline.features | INFO    | feature engineering complete
-{"stage": "features", "seconds": 0.25, "metrics": {"user_features": 30, "item_features": 29, "interaction_features": 4, "users": 943, "items": 1682, "pairs": 79619}}
+2026-11-12 08:01:40 | pipeline.features | INFO    | feature engineering complete
+{"stage": "features", "seconds": 0.28, "metrics": {"user_features": 30, "item_features": 29, "interaction_features": 4, "users": 943, "items": 1682, "pairs": 79619}}
 
-[exit code 0, 1.7s]
+[exit code 0, 1.8s]

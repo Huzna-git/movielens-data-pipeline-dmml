@@ -40,7 +40,7 @@ body{margin:0;background:#1e1e2e;padding:18px;font-family:'DejaVu Sans Mono','Me
 .win{background:#11111b;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.6);overflow:hidden;border:1px solid #313244}
 .bar{background:#181825;padding:9px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #313244}
 .dot{width:12px;height:12px;border-radius:50%%}.title{margin-left:12px;color:#a6adc8;font-size:12px}
-pre{margin:0;padding:14px 16px;color:#cdd6f4;font-size:12.5px;line-height:1.45;white-space:pre-wrap;word-break:break-all}
+pre{margin:0;padding:16px 18px;color:#cdd6f4;font-size:13.5px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
 .cmd{color:#a6e3a1}.p{color:#89b4fa}.w{color:#f9e2af}.e{color:#f38ba8}.d{color:#6c7086}
 </style></head><body><div class="win"><div class="bar"><span class="dot" style="background:#f38ba8"></span><span class="dot" style="background:#f9e2af"></span><span class="dot" style="background:#a6e3a1"></span><span class="title">%(title)s</span></div><pre>%(body)s</pre></div></body></html>"""
 
@@ -67,8 +67,13 @@ def render(name: str, title: str, command: str, text: str, width: int = 1280) ->
     page = OUT / f"{name}.html"
     page.write_text(PAGE % {"title": html.escape(title), "body": body}, encoding="utf-8")
     png = OUT / f"{name}.png"
-    lines = text.count("\n") + 3
-    height = min(2200, 90 + 19 * lines)
+    # Size the window to hug the content: one row per LINE, plus the extra rows a
+    # long line wraps into at this width (~150 monospace chars), plus the command
+    # line and the chrome (title bar + padding).  This keeps short outputs from
+    # leaving a large empty dark area below the text.
+    chars_per_row = max(40, (width - 90) // 8)
+    rows = 1 + sum(1 + len(l) // chars_per_row for l in text.splitlines())
+    height = min(2400, 112 + round(20.5 * (rows + 1)))   # +1 row of slack so the trailing [exit code] line is never clipped
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
                     f"--window-size={width},{height}", f"--screenshot={png}", page.as_uri()],
                    check=True, capture_output=True, timeout=120)
@@ -83,6 +88,9 @@ def run_stage(name: str, shown: str, argv: list[str]) -> Path:
     proc = subprocess.run(argv, cwd=ROOT, env=env, capture_output=True, text=True)
     text = (proc.stdout + proc.stderr).strip()
     text = "\n".join(l for l in text.splitlines() if "mlflow.store.db.utils" not in l)
+    # Keep the capture free of machine-specific absolute paths: the repo root
+    # becomes "." and the home directory "~", so a screenshot shows portable paths.
+    text = text.replace(str(ROOT), ".").replace(str(Path.home()), "~")
     text += f"\n\n[exit code {proc.returncode}, {time.time() - t0:.1f}s]"
     (OUT / f"{name}.txt").write_text(text, encoding="utf-8")
     png = render(name, f"{shown} - recommendation-pipeline", shown, text)

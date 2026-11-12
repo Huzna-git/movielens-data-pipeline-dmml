@@ -1,17 +1,17 @@
 {
   "runs": {
-    "popularity": "18ba2905c9a34d8891428a3faebe2d0f",
-    "content_based_genres": "f5d634c763ca499ea4a293279eaa709f",
-    "als_matrix_factorization": "7bb3abbf95064c11b54cd23eddd8e613",
-    "implicit_als": "b6eafe0c79534237a5685493fa673151",
-    "hybrid": "8e79132841b84b1eb2d29ace09fefb26"
+    "popularity": "6397cbcfba27409292234a560a416136",
+    "implicit_als": "71326e03872e418e95720ec4e79f20b0",
+    "als_matrix_factorization": "b682aa1db08b40a8a4d865e6af45db0f",
+    "content_based_genres": "b6f53019822f40f9addfc06246fad872",
+    "hybrid": "12593f2c641544d0993395f7f50876b1"
   },
   "trained_at": {
-    "popularity": "2026-11-11T04:33:00+00:00",
-    "content_based_genres": "2026-11-11T04:33:00+00:00",
-    "als_matrix_factorization": "2026-11-11T04:33:01+00:00",
-    "implicit_als": "2026-11-11T04:33:06+00:00",
-    "hybrid": "2026-11-11T04:33:11+00:00"
+    "popularity": "2026-11-12T05:18:52+00:00",
+    "implicit_als": "2026-11-12T05:18:59+00:00",
+    "als_matrix_factorization": "2026-11-12T05:18:54+00:00",
+    "content_based_genres": "2026-11-12T05:18:52+00:00",
+    "hybrid": "2026-11-12T05:19:04+00:00"
   },
   "implicit_als_params": {
     "n_factors": 20,

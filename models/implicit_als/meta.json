@@ -11,13 +11,13 @@
   },
   "train_metrics": {
     "interactions_fit": 79619,
-    "fit_seconds": 10.7
+    "fit_seconds": 7.36
   },
-  "train_seconds": 10.7,
+  "train_seconds": 7.36,
   "tuned_on_validation_split": true,
-  "mlflow_run_id": "b6eafe0c79534237a5685493fa673151",
+  "mlflow_run_id": "71326e03872e418e95720ec4e79f20b0",
   "feature_version": "09dbf74de6",
   "dataset": "movielens-100k",
   "train_rows": 79619,
-  "trained_at": "2026-11-11T04:33:06+00:00"
+  "trained_at": "2026-11-12T05:18:59+00:00"
 }

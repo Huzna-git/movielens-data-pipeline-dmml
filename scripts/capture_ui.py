@@ -23,7 +23,6 @@ from websockets.sync.client import connect
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports" / "screenshots"
 CHROME = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
-PORT = 9333
 
 
 class Page:
@@ -48,14 +47,29 @@ class Page:
 def capture(name: str, url: str, wait: float, js: list[str], width: int, height: int) -> Path:
     OUT.mkdir(parents=True, exist_ok=True)
     profile = tempfile.mkdtemp(prefix="chrome-cdp-")
+    # Let Chrome pick a FREE debug port (--remote-debugging-port=0) and read the
+    # chosen port back from the DevToolsActivePort file in the profile.  A fixed
+    # port would silently attach to any other Chrome already debugging there.
     proc = subprocess.Popen([CHROME, "--headless=new", "--no-sandbox", "--hide-scrollbars", "--use-angle=swiftshader",
-                             "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist", f"--remote-debugging-port={PORT}",
+                             "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist", "--remote-debugging-port=0",
                              f"--user-data-dir={profile}", f"--window-size={width},{height}", "about:blank"],
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
+        port_file = Path(profile) / "DevToolsActivePort"
+        port = None
+        for _ in range(50):
+            if port_file.exists():
+                try:
+                    port = int(port_file.read_text().splitlines()[0])
+                    break
+                except (ValueError, IndexError):
+                    pass
+            time.sleep(0.2)
+        if port is None:
+            raise RuntimeError("chrome did not report its DevTools port")
         for _ in range(50):
             try:
-                targets = json.load(urllib.request.urlopen(f"http://127.0.0.1:{PORT}/json"))
+                targets = json.load(urllib.request.urlopen(f"http://127.0.0.1:{port}/json"))
                 page = next(t for t in targets if t["type"] == "page")
                 break
             except Exception:

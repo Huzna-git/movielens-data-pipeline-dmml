@@ -43,7 +43,7 @@ Requirements: Python 3.10+ (developed on 3.12), `make`, internet access for
 the one-time 5 MB dataset download (or use the synthetic dataset, see below).
 
 ```bash
-git clone https://github.com/Huzna-git/wms-dmml && cd wms-dmml
+git clone https://github.com/Huzna-git/movielens-data-pipeline-dmml && cd movielens-data-pipeline-dmml
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 

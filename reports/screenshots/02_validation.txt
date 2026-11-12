@@ -1,10 +1,27 @@
-2026-11-04 09:11:32 | pipeline.validation | INFO    | loaded raw tables: {'users': 943, 'items': 1682, 'interactions': 100000}
-2026-11-04 09:11:32 | pipeline.validation | INFO    | users         rows in     943 | errors     0 | warnings     0 | rows out     943
-2026-11-04 09:11:32 | pipeline.validation | INFO    | items         rows in    1682 | errors     0 | warnings    37 | rows out    1682
-2026-11-04 09:11:32 | pipeline.validation | INFO    | interactions  rows in  100000 | errors     0 | warnings     0 | rows out  100000
-2026-11-04 09:11:32 | pipeline.validation | WARNING | WARN  items         missing_release_date            1 rows
-2026-11-04 09:11:32 | pipeline.validation | WARNING | WARN  items         duplicate_title                36 rows
-2026-11-04 09:11:32 | pipeline.validation | INFO    | validation complete: 22 checks, 0 FAIL, 2 WARN, 0 error rows -> /home/khadeeja/Documents/Projects/wms_store/project/recommendation-pipeline/reports/validation_report.md
-{"stage": "validation", "seconds": 0.24, "metrics": {"users_rows_out": 943, "items_rows_out": 1682, "interactions_rows_out": 100000, "checks_run": 22, "checks_failed": 0, "checks_warned": 2, "error_rows": 0}}
+2026-11-12 08:01:33 | pipeline.validation | INFO    | loaded raw tables: {'users': 958, 'items': 1697, 'interactions': 100360}
+2026-11-12 08:01:33 | pipeline.validation | INFO    | users         rows in     958 | errors    15 | warnings     0 | rows out     943
+2026-11-12 08:01:33 | pipeline.validation | INFO    | items         rows in    1697 | errors    15 | warnings    41 | rows out    1682
+2026-11-12 08:01:33 | pipeline.validation | INFO    | interactions  rows in  100360 | errors   360 | warnings     0 | rows out  100000
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  users         invalid_type                    2 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  users         missing_value                   2 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  users         duplicate_row                   5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  items         missing_value                   5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  items         duplicate_row                   5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  invalid_type                   66 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  missing_value                 160 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  duplicate_row                  40 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  conflicting_duplicate_key     202 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  users         duplicate_key                   5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  users         out_of_range                    3 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  users         invalid_category                5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  items         duplicate_key                   5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  items         unparseable_date                5 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | WARN  items         missing_release_date            1 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | WARN  items         duplicate_title                45 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  out_of_range                   80 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  unknown_user                   40 rows
+2026-11-12 08:01:33 | pipeline.validation | WARNING | FAIL  interactions  unknown_item                   40 rows
+2026-11-12 08:01:33 | pipeline.validation | INFO    | validation complete: 22 checks, 17 FAIL, 2 WARN, 390 error rows -> ./reports/validation_report.md
+{"stage": "validation", "seconds": 0.42, "metrics": {"users_rows_out": 943, "items_rows_out": 1682, "interactions_rows_out": 100000, "checks_run": 22, "checks_failed": 17, "checks_warned": 2, "error_rows": 390}}
 
-[exit code 0, 1.6s]
+[exit code 0, 1.9s]
